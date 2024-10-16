@@ -165,7 +165,7 @@
     .submit-button i {
       font-size: 27px; /* Adjust icon size to fit inside the button */
     }
-    
+
     .hidden {
       display: none;
     }
@@ -361,25 +361,18 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Demo Chatbot</h2>
-      </div><!-- End Section Title -->
-      
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4">
-              <div class="custom-container">
-                  <div id="text-bubble-container" class="text-bubble-container"></div>
-                  <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()">
-                  <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
-                      <i class="bi bi-arrow-up-short"></i>
-                  </button>
-              </div>
+        <div class="row gy-4">
+          <div class="custom-container">
+            <div id="text-bubble-container" class="text-bubble-container"></div>
+            <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()" onkeydown="handleEnterKey(event)">
+            <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
+              <i class="bi bi-arrow-up-short"></i>
+            </button>
           </div>
+        </div>
       </div>
     </section><!-- /Contact Section -->
-
   </main>
 
 
@@ -408,6 +401,12 @@
           } else {
               submitButton.classList.add('hidden');
           }
+      }
+
+      function handleEnterKey(event) {
+        if (event.key === 'Enter') {
+          addTextBubble('sent');
+        }
       }
   
       function addTextBubble() {
