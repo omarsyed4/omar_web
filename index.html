@@ -66,6 +66,27 @@
       position: relative; /* To position the button inside the container */
     }
     
+    .text-bubble-container {
+      max-height: 500px; /* Adjust as needed */
+      overflow-y: auto; /* Scroll if content overflows */
+      margin-bottom: 10px; /* Space between bubbles and input */
+    }
+
+    .text-bubble {
+      background-color: rgb(0, 155, 250);
+      color: white;
+      border-radius: 15px;
+      padding: 10px;
+      margin-bottom: 5px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    
+    .text-bubble.right {
+      align-self: flex-end; /* Align the bubble to the right */
+      background-color: #e0f7fa; /* Optional: Different background color for right-aligned bubbles */
+    }   
+    
     .custom-input {
       background-color: transparent; /* Transparent background */
       border: 3px solid rgb(30, 32, 32); /* White border */
@@ -76,6 +97,7 @@
       width: 100%; /* Full width */
       box-sizing: border-box; /* Include padding and border in element's total width and height */
       font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
+      word-wrap: break-word;
     }
     
     .custom-input:focus {
@@ -116,7 +138,7 @@
     .hidden {
       display: none;
     }
-    
+
   </style>
 
 
@@ -317,11 +339,12 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
           <div class="custom-container">
+            <div id="text-bubble-container" class="text-bubble-container"></div>
             <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()">
-            <button type="submit" class="submit-button hidden">
+            <button type="button" class="submit-button hidden" onclick="addTextBubble()">
               <i class="bi bi-arrow-up-short"></i>
             </button>
-          </div>        
+          </div>
         </div>
       </div>
     </section><!-- /Contact Section -->
@@ -345,19 +368,49 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script>
-    function toggleButtonVisibility() {
-      const inputField = document.getElementById('name-field');
-      const submitButton = document.querySelector('.submit-button');
-      
-      if (inputField.value.trim() !== '') {
-        submitButton.classList.remove('hidden');
-      } else {
-        submitButton.classList.add('hidden');
-      }
+  function toggleButtonVisibility() {
+    const inputField = document.getElementById('name-field');
+    const submitButton = document.querySelector('.submit-button');
+    
+    if (inputField.value.trim() !== '') {
+      submitButton.classList.remove('hidden');
+    } else {
+      submitButton.classList.add('hidden');
     }
+  }
+  
+  function addTextBubble() {
+    console.log("addTextBubble function called");
+  
+    const inputField = document.getElementById('name-field');
+    console.log("Input field value:", inputField.value);
+  
+    const textBubbleContainer = document.getElementById('text-bubble-container');
+    console.log("Text bubble container found:", textBubbleContainer);
+  
+    if (inputField.value.trim() !== '') {
+      console.log("Input field is not empty, proceeding to create text bubble");
+  
+      const textBubble = document.createElement('div');
+      textBubble.className = 'text-bubble';
+      textBubble.textContent = inputField.value;
+      console.log("Text bubble created with content:", textBubble.textContent);
+  
+      textBubbleContainer.appendChild(textBubble);
+      console.log("Text bubble appended to container");
+  
+      inputField.value = '';
+      console.log("Input field cleared");
+  
+      toggleButtonVisibility();
+      console.log("toggleButtonVisibility function called");
+    } else {
+      console.log("Input field is empty, no text bubble created");
+    }
+  }
   </script>
 
-  <!-- Main JS File -->
+<!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>
