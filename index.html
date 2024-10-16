@@ -67,25 +67,37 @@
     }
     
     .text-bubble-container {
-      max-height: 500px; /* Adjust as needed */
-      overflow-y: auto; /* Scroll if content overflows */
-      margin-bottom: 10px; /* Space between bubbles and input */
+        max-height: 500px; /* Adjust as needed */
+        overflow-y: auto; /* Scroll if content overflows */
+        margin-bottom: 10px; /* Space between bubbles and input */
+        display: flex;
+        flex-direction: column;
     }
-
+    
     .text-bubble {
-      background-color: rgb(0, 155, 250);
-      color: white;
-      border-radius: 15px;
-      padding: 10px;
-      margin-bottom: 5px;
-      max-width: 70%;
-      word-wrap: break-word;
+        background-color: rgb(38, 40, 40);
+        color: white;
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 5px;
+        display: inline-block;
+        max-width: 60%;
+        word-wrap: break-word;
     }
     
     .text-bubble.right {
-      align-self: flex-end; /* Align the bubble to the right */
-      background-color: #e0f7fa; /* Optional: Different background color for right-aligned bubbles */
-    }   
+        align-self: flex-end; /* Align the bubble to the right */
+        background-color: rgb(0, 155, 250);
+    }
+
+    .text-bubble.left {
+        align-self: flex-start; /* Align the bubble to the left */
+        background-color: rgb(38, 40, 40); /* Same as the base color */
+    }
+
+    .hidden {
+        display: none;
+    }
     
     .custom-input {
       background-color: transparent; /* Transparent background */
@@ -115,7 +127,7 @@
     .submit-button {
       position: absolute;
       right: 15px; /* Adjust position to fit inside the input field */
-      top: 50%;
+      bottom: 2px; /* Adjust position to fit inside the input field */
       transform: translateY(-50%);
       background-color: rgb(0, 155, 250);
       border: none;
@@ -331,21 +343,21 @@
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Demo Chatbot</h2>
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Demo Chatbot</h2>
       </div><!-- End Section Title -->
       
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="custom-container">
-            <div id="text-bubble-container" class="text-bubble-container"></div>
-            <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()">
-            <button type="button" class="submit-button hidden" onclick="addTextBubble()">
-              <i class="bi bi-arrow-up-short"></i>
-            </button>
+          <div class="row gy-4">
+              <div class="custom-container">
+                  <div id="text-bubble-container" class="text-bubble-container"></div>
+                  <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()">
+                  <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
+                      <i class="bi bi-arrow-up-short"></i>
+                  </button>
+              </div>
           </div>
-        </div>
       </div>
     </section><!-- /Contact Section -->
 
@@ -367,49 +379,64 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  
   <script>
-  function toggleButtonVisibility() {
-    const inputField = document.getElementById('name-field');
-    const submitButton = document.querySelector('.submit-button');
-    
-    if (inputField.value.trim() !== '') {
-      submitButton.classList.remove('hidden');
-    } else {
-      submitButton.classList.add('hidden');
-    }
-  }
+      function toggleButtonVisibility() {
+          const inputField = document.getElementById('name-field');
+          const submitButton = document.querySelector('.submit-button');
+          if (inputField.value.trim() !== '') {
+              submitButton.classList.remove('hidden');
+          } else {
+              submitButton.classList.add('hidden');
+          }
+      }
   
-  function addTextBubble() {
-    console.log("addTextBubble function called");
-  
-    const inputField = document.getElementById('name-field');
-    console.log("Input field value:", inputField.value);
-  
-    const textBubbleContainer = document.getElementById('text-bubble-container');
-    console.log("Text bubble container found:", textBubbleContainer);
-  
-    if (inputField.value.trim() !== '') {
-      console.log("Input field is not empty, proceeding to create text bubble");
-  
-      const textBubble = document.createElement('div');
-      textBubble.className = 'text-bubble';
-      textBubble.textContent = inputField.value;
-      console.log("Text bubble created with content:", textBubble.textContent);
-  
-      textBubbleContainer.appendChild(textBubble);
-      console.log("Text bubble appended to container");
-  
-      inputField.value = '';
-      console.log("Input field cleared");
-  
-      toggleButtonVisibility();
-      console.log("toggleButtonVisibility function called");
-    } else {
-      console.log("Input field is empty, no text bubble created");
-    }
-  }
+      function addTextBubble() {
+          console.log("addTextBubble called");
+          
+          const inputField = document.getElementById('name-field');
+          console.log("inputField:", inputField);
+          
+          const textBubbleContainer = document.getElementById('text-bubble-container');
+          console.log("textBubbleContainer:", textBubbleContainer);
+          
+          const text = inputField.value.trim();
+          console.log("text:", text);
+      
+          if (text !== '') {
+              const textBubble = document.createElement('div');
+              console.log("Created textBubble element:", textBubble);
+              
+              textBubble.className = 'text-bubble right';
+              console.log("Set textBubble className to 'text-bubble right'");
+              
+              textBubble.textContent = text;
+              console.log("Set textBubble textContent to:", text);
+              
+              textBubbleContainer.appendChild(textBubble);
+              console.log("Appended textBubble to textBubbleContainer");
+              
+              inputField.value = '';
+              console.log("Cleared inputField value");
+              
+              toggleButtonVisibility();
+              console.log("Called toggleButtonVisibility");
+      
+              // Simulate receiving a message
+              setTimeout(() => {
+                  console.log("Simulating receiving a message");
+                  const receivedBubble = document.createElement('div');
+                  receivedBubble.className = 'text-bubble left';
+                  receivedBubble.textContent = text; // For now, just echo the sent text
+                  textBubbleContainer.appendChild(receivedBubble);
+                  console.log("Appended receivedBubble to textBubbleContainer");
+              }, 1000);
+          } else {
+              console.log("No text entered, skipping bubble creation");
+          }
+      }
   </script>
-
+  
 <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
