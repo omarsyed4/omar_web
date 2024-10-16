@@ -20,12 +20,105 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .portfolio-info {
+      flex-direction: column;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .center-button {
+      background-color: blue;
+      color: white; 
+      border: none; 
+      padding: 10px 20px; 
+      border-radius: 5px;
+      margin-top: 90px;
+
+    }
+    
+    .center-button::after {
+      content: ' →'; 
+      font-size: 12px; 
+      color: white;
+    }
+    
+    .center-button:hover {
+      background-color: darkblue; 
+    }
+
+
+    .custom-container {
+      border: 1px solid black; 
+      background-color: black;
+      padding: 10px;
+      position: relative; /* To position the button inside the container */
+    }
+    
+    .custom-input {
+      background-color: transparent; /* Transparent background */
+      border: 3px solid rgb(30, 32, 32); /* White border */
+      border-radius: 30px; /* Rounded corners */
+      padding: 5px; /* Optional: Add some padding */
+      padding-left: 20px; /* 20px padding from the left */
+      color: white; /* Change font color */
+      width: 100%; /* Full width */
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+      font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
+    }
+    
+    .custom-input:focus {
+      background-color: transparent; /* Keep background transparent on focus */
+      border: 3px solid rgb(39, 41, 41); /* White border */
+      outline: none; /* Remove default outline */
+      color: white; /* Keep text color white on focus */
+    }
+    
+    .custom-input::placeholder {
+      color: rgb(75, 75, 75); /* Change placeholder text color to white */
+      font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
+    }
+    
+    .submit-button {
+      position: absolute;
+      right: 15px; /* Adjust position to fit inside the input field */
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgb(0, 155, 250);
+      border: none;
+      border-radius: 50%;
+      width: 28px; /* Adjust size to fit inside the input field */
+      height: 28px; /* Adjust size to fit inside the input field */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      padding: 0; /* Remove padding */
+      font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
+    }
+    
+    .submit-button i {
+      font-size: 27px; /* Adjust icon size to fit inside the button */
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+  </style>
+
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -64,12 +157,12 @@
 
   <main class="main">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+  <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background">
+    <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
+    
+  </section><!-- /Hero Section -->
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
-
-    </section><!-- /Hero Section -->
 
     <!-- Projects Section -->
     <section id="projects" class="portfolio section light-background">
@@ -92,39 +185,42 @@
                 <div class="portfolio-info">
                   <h4>App 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <div class="button-container">
+                    <button class="center-button">See Details</button>
+                  </div>
                 </div>
               </div>
               <h4 class="text-center mt-2">App 1</h4>
             </div><!-- End Projects Item -->
-    
+                     
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
                 <img src="assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <div class="button-container">
+                    <button class="center-button">See Details</button>
+                  </div>
                 </div>
               </div>
               <h4 class="text-center mt-2">App 2</h4>
             </div><!-- End Projects Item -->
-    
+            
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
                 <img src="assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <div class="button-container">
+                    <button class="center-button">See Details</button>
+                  </div>
                 </div>
               </div>
               <h4 class="text-center mt-2">App 3</h4>
             </div><!-- End Projects Item -->
-    
+
           </div><!-- End Projects Container -->
     
         </div>
@@ -210,137 +306,28 @@
 
     </section><!-- /Resume Section -->
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Demo Chatbot</h2>
       </div><!-- End Section Title -->
-
+      
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 1
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
+        <div class="row gy-4">
+          <div class="custom-container">
+            <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()">
+            <button type="submit" class="submit-button hidden">
+              <i class="bi bi-arrow-up-short"></i>
+            </button>
+          </div>        
         </div>
-
       </div>
-
-    </section><!-- /Testimonials Section -->
-
+    </section><!-- /Contact Section -->
 
   </main>
 
-  <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -357,6 +344,18 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script>
+    function toggleButtonVisibility() {
+      const inputField = document.getElementById('name-field');
+      const submitButton = document.querySelector('.submit-button');
+      
+      if (inputField.value.trim() !== '') {
+        submitButton.classList.remove('hidden');
+      } else {
+        submitButton.classList.add('hidden');
+      }
+    }
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
