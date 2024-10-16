@@ -74,6 +74,24 @@
         flex-direction: column;
     }
     
+    /* Custom scrollbar styles */
+    .text-bubble-container::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+    
+    .text-bubble-container::-webkit-scrollbar-track {
+        background: transparent; /* Background of the scrollbar track */
+    }
+    
+    .text-bubble-container::-webkit-scrollbar-thumb {
+        background: #888; /* Color of the scrollbar thumb */
+        border-radius: 8px; /* Rounded corners for the scrollbar thumb */
+    }
+    
+    .text-bubble-container::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color of the scrollbar thumb on hover */
+    }
+
     .text-bubble {
         background-color: rgb(38, 40, 40);
         color: white;
@@ -88,6 +106,7 @@
     .text-bubble.right {
         align-self: flex-end; /* Align the bubble to the right */
         background-color: rgb(0, 155, 250);
+        margin-right: 5px; 
     }
 
     .text-bubble.left {
