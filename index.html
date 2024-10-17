@@ -33,6 +33,19 @@
       .hero {
         position: relative;
         overflow: hidden;
+        z-index: 1;
+      }
+
+      #contact {
+        position: absolute;
+        max-width: 40%;
+        top: 0;
+        left: 50;
+        z-index: 2; /* Higher z-index to make sure it's on top */
+        padding: 0px; /* Adjust as needed */
+        padding-top: 3%;
+        padding-left: 3%;
+        background-color: transparent; /* Ensure padding area is transparent */
       }
 
       .hero-video {
@@ -40,6 +53,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        z-index: 1;
       }
 
     .portfolio-info {
@@ -73,8 +87,8 @@
 
 
     .custom-container {
-      border: 1px solid black; 
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 30px;
       padding: 10px;
       position: relative; /* To position the button inside the container */
     }
@@ -106,25 +120,36 @@
     }
 
     .text-bubble {
-        background-color: rgb(38, 40, 40);
-        color: white;
-        border-radius: 15px;
-        padding: 10px;
-        margin-bottom: 5px;
-        display: inline-block;
-        max-width: 60%;
-        word-wrap: break-word;
+      background-color: rgb(38, 40, 40);
+      color: white;
+      border-radius: 15px;
+      padding: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+      max-width: 60%;
+      word-wrap: break-word;
+      position: relative;
     }
-    
+
     .text-bubble.right {
-        align-self: flex-end; /* Align the bubble to the right */
-        background-color: rgb(0, 155, 250);
-        margin-right: 5px; 
+      align-self: flex-end; /* Align the bubble to the right */
+      background-color: rgb(0, 155, 250);
+      margin-right: 5px; 
     }
 
     .text-bubble.left {
-        align-self: flex-start; /* Align the bubble to the left */
-        background-color: rgb(38, 40, 40); /* Same as the base color */
+      align-self: flex-start; /* Align the bubble to the left */
+      background-color: rgb(38, 40, 40); /* Same as the base color */
+      padding-left: 50px; /* Add padding to make space for the image */
+    }
+
+    .text-bubble.left img {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 30px; /* Adjust size as needed */
+      height: 30px; /* Adjust size as needed */
+      border-radius: 50%;
     }
 
     .hidden {
@@ -421,49 +446,59 @@
       }
   
       function addTextBubble() {
-          console.log("addTextBubble called");
-          
-          const inputField = document.getElementById('name-field');
-          console.log("inputField:", inputField);
-          
-          const textBubbleContainer = document.getElementById('text-bubble-container');
-          console.log("textBubbleContainer:", textBubbleContainer);
-          
-          const text = inputField.value.trim();
-          console.log("text:", text);
-      
-          if (text !== '') {
-              const textBubble = document.createElement('div');
-              console.log("Created textBubble element:", textBubble);
-              
-              textBubble.className = 'text-bubble right';
-              console.log("Set textBubble className to 'text-bubble right'");
-              
-              textBubble.textContent = text;
-              console.log("Set textBubble textContent to:", text);
-              
-              textBubbleContainer.appendChild(textBubble);
-              console.log("Appended textBubble to textBubbleContainer");
-              
-              inputField.value = '';
-              console.log("Cleared inputField value");
-              
-              toggleButtonVisibility();
-              console.log("Called toggleButtonVisibility");
-      
-              // Simulate receiving a message
-              setTimeout(() => {
-                  console.log("Simulating receiving a message");
-                  const receivedBubble = document.createElement('div');
-                  receivedBubble.className = 'text-bubble left';
-                  receivedBubble.textContent = text; // For now, just echo the sent text
-                  textBubbleContainer.appendChild(receivedBubble);
-                  console.log("Appended receivedBubble to textBubbleContainer");
-              }, 1000);
-          } else {
-              console.log("No text entered, skipping bubble creation");
-          }
+      console.log("addTextBubble called");
+
+      const inputField = document.getElementById('name-field');
+      console.log("inputField:", inputField);
+
+      const textBubbleContainer = document.getElementById('text-bubble-container');
+      console.log("textBubbleContainer:", textBubbleContainer);
+
+      const text = inputField.value.trim();
+      console.log("text:", text);
+
+      if (text !== '') {
+        const textBubble = document.createElement('div');
+        console.log("Created textBubble element:", textBubble);
+
+        textBubble.className = 'text-bubble right';
+        console.log("Set textBubble className to 'text-bubble right'");
+
+        textBubble.textContent = text;
+        console.log("Set textBubble textContent to:", text);
+
+        textBubbleContainer.appendChild(textBubble);
+        console.log("Appended textBubble to textBubbleContainer");
+
+        inputField.value = '';
+        console.log("Cleared inputField value");
+
+        toggleButtonVisibility();
+        console.log("Called toggleButtonVisibility");
+
+        // Simulate receiving a message
+        setTimeout(() => {
+          console.log("Simulating receiving a message");
+          const receivedBubble = document.createElement('div');
+          receivedBubble.className = 'text-bubble left';
+
+          const img = document.createElement('img');
+          img.src = 'assets/img/my-profile-img.jpg';
+          img.alt = 'Sender';
+
+          receivedBubble.appendChild(img);
+
+          const textNode = document.createTextNode(text); // For now, just echo the sent text
+          receivedBubble.appendChild(textNode);
+
+          textBubbleContainer.appendChild(receivedBubble);
+          console.log("Appended receivedBubble to textBubbleContainer");
+        }, 1000);
+      } else {
+        console.log("No text entered, skipping bubble creation");
       }
+    }
+
   </script>
   
 <!-- Main JS File -->
