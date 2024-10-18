@@ -10,7 +10,7 @@
 
   <!-- Favicons -->
   <link href="assets/img/my-profile-img.jpg" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/my-profile-img.jpg" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -91,16 +91,18 @@
       border-radius: 30px;
       padding: 10px;
       position: relative; /* To position the button inside the container */
+      width: 40vw; /* Fixed width, adjust as needed */
     }
     
     .text-bubble-container {
-        max-height: 300px; /* Adjust as needed */
-        overflow-y: auto; /* Scroll if content overflows */
-        margin-bottom: 10px; /* Space between bubbles and input */
-        display: flex;
-        flex-direction: column;
+      max-height: 300px; /* Adjust as needed */
+      overflow-y: auto; /* Scroll if content overflows */
+      margin-bottom: 10px; /* Space between bubbles and input */
+      display: flex;
+      flex-direction: column;
+      width: 100%; /* Full width of the parent container */
     }
-    
+
     /* Custom scrollbar styles */
     .text-bubble-container::-webkit-scrollbar {
         width: 10px; /* Width of the scrollbar */
@@ -479,52 +481,60 @@
   
       function addTextBubble() {
         console.log("addTextBubble called");
-
+      
         const inputField = document.getElementById('name-field');
         console.log("inputField:", inputField);
-
+      
         const textBubbleContainer = document.getElementById('text-bubble-container');
         console.log("textBubbleContainer:", textBubbleContainer);
-
+      
         const text = inputField.value.trim();
         console.log("text:", text);
-
+      
         if (text !== '') {
           const textBubble = document.createElement('div');
           console.log("Created textBubble element:", textBubble);
-
+      
           textBubble.className = 'text-bubble right';
           console.log("Set textBubble className to 'text-bubble right'");
-
+      
           textBubble.textContent = text;
           console.log("Set textBubble textContent to:", text);
-
+      
           textBubbleContainer.appendChild(textBubble);
           console.log("Appended textBubble to textBubbleContainer");
-
+      
           inputField.value = '';
           console.log("Cleared inputField value");
-
+      
           toggleButtonVisibility();
           console.log("Called toggleButtonVisibility");
-
+      
+          // Scroll to the bottom of the container
+          textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+          console.log("Scrolled to the bottom of textBubbleContainer");
+      
           // Simulate receiving a message
           setTimeout(() => {
             console.log("Simulating receiving a message");
             const receivedBubble = document.createElement('div');
             receivedBubble.className = 'text-bubble left';
-
+      
             const img = document.createElement('img');
             img.src = 'assets/img/my-profile-img.jpg';
             img.alt = 'Sender';
-
+      
             receivedBubble.appendChild(img);
-
+      
             const textNode = document.createTextNode(text); // For now, just echo the sent text
             receivedBubble.appendChild(textNode);
-
+      
             textBubbleContainer.appendChild(receivedBubble);
             console.log("Appended receivedBubble to textBubbleContainer");
+      
+            // Scroll to the bottom of the container
+            textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+            console.log("Scrolled to the bottom of textBubbleContainer");
           }, 1000);
         } else {
           console.log("No text entered, skipping bubble creation");
