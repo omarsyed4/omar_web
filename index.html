@@ -526,6 +526,12 @@
 
           // Change the hero video to "Reading Message, Replying Back"
           changeHeroVideo('assets/img/Reading Message, Replying Back.mov');
+          
+          // Wait 2 seconds and then change the video to "Looped Waiting.mov"
+          setTimeout(() => {
+            console.log("Changing hero video to 'Replying Loop.mov' after 2 seconds");
+            changeHeroVideo('assets/img/Replying Loop.mov', true); // Enable looping for the "Looped Waiting.mov" video
+          }, 5000); // 2000 milliseconds = 2 seconds
 
           // Simulate receiving a message
           setTimeout(() => {
@@ -549,13 +555,21 @@
             textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
             console.log("Scrolled to the bottom of textBubbleContainer");
 
-            // Change the hero video to "Just sent the text, waiting for a response"
+            // Change the hero video
             changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
+            
+            // Wait 2 seconds and then change the video to "Looped Waiting.mov"
+            setTimeout(() => {
+              console.log("Changing hero video to 'Looped Waiting.mov' after 2 seconds");
+              changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
+            }, 4000); // 2000 milliseconds = 2 seconds
           }, 10000);
         } else {
           console.log("No text entered, skipping bubble creation");
         }
       }
+
+
 
       // Add a "received" bubble when the page initially loads
       window.addEventListener('DOMContentLoaded', () => {
@@ -583,8 +597,14 @@
           console.log("Scrolled to the bottom of textBubbleContainer after initial message");
       
           // Change the hero video
-          changeHeroVideo('assets/img/Initial Text.mov');
-        }, 3000); // 5000 milliseconds = 5 seconds
+          changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
+          
+          // Wait 2 seconds and then change the video to "Looped Waiting.mov"
+          setTimeout(() => {
+            console.log("Changing hero video to 'Looped Waiting.mov' after 2 seconds");
+            changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
+          }, 4000); // 2000 milliseconds = 2 seconds
+        }, 2000); // 5000 milliseconds = 5 seconds
       });
       
   </script>
