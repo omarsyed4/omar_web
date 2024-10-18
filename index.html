@@ -156,6 +156,15 @@
       border-radius: 50%;
     }
 
+    .read-receipt {
+      font-size: 12px;
+      font-weight: bold;
+      color: grey;
+      margin-left: auto; /* Aligns it to the right side */
+      margin-right: 10px;
+      margin-top: -5px; /* Adjust spacing to make it closer to the sent message */
+    }
+
     .hidden {
         display: none;
     }
@@ -502,22 +511,41 @@
         console.log("text:", text);
 
         if (text !== '') {
+          // Remove any existing read receipt before adding a new one
+          const existingReadReceipt = document.querySelector('.read-receipt');
+          if (existingReadReceipt) {
+            existingReadReceipt.remove();
+            console.log("Removed existing read receipt");
+          }
+
+          // Create the sent text bubble (right-aligned)
           const textBubble = document.createElement('div');
           console.log("Created textBubble element:", textBubble);
 
-          textBubble.className = 'text-bubble right';
+          textBubble.className = 'text-bubble right'; // Right-aligned (sent message)
           console.log("Set textBubble className to 'text-bubble right'");
 
           textBubble.textContent = text;
           console.log("Set textBubble textContent to:", text);
 
-          textBubbleContainer.appendChild(textBubble);
+          textBubbleContainer.appendChild(textBubble); // Append the text bubble
           console.log("Appended textBubble to textBubbleContainer");
 
-          inputField.value = '';
+          // Add the read receipt under the right-aligned bubble after 2 seconds
+          setTimeout(() => {
+            const readReceipt = document.createElement('div');
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            readReceipt.className = 'read-receipt';
+            readReceipt.textContent = `Read: ${currentTime}`;
+            textBubbleContainer.appendChild(readReceipt);
+            console.log("Appended readReceipt under sent message");
+            textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+          }, 1000); 
+          
+          inputField.value = ''; // Clear the input field
           console.log("Cleared inputField value");
 
-          toggleButtonVisibility();
+          toggleButtonVisibility(); // Update UI based on input field state
           console.log("Called toggleButtonVisibility");
 
           // Scroll to the bottom of the container
@@ -531,7 +559,7 @@
           setTimeout(() => {
             console.log("Changing hero video to 'Replying Loop.mov' after 2 seconds");
             changeHeroVideo('assets/img/Replying Loop.mov', true); // Enable looping for the "Looped Waiting.mov" video
-          }, 5000); // 2000 milliseconds = 2 seconds
+          }, 5000); 
 
           // Simulate receiving a message
           setTimeout(() => {
@@ -568,7 +596,6 @@
           console.log("No text entered, skipping bubble creation");
         }
       }
-
 
 
       // Add a "received" bubble when the page initially loads
