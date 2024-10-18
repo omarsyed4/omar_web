@@ -254,7 +254,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-      <video src="assets/img/hero-bg.mov" autoplay loop muted data-aos="fade-in" class="hero-video"></video>
+      <video src="assets/img/Initial Text.mov" autoplay loop muted data-aos="fade-in" class="hero-video"></video>
     </section><!-- /Hero Section -->
 
     <!-- Projects Section -->
@@ -481,68 +481,112 @@
         }
       }
   
+      function changeHeroVideo(src) {
+        const heroVideo = document.querySelector('.hero-video');
+        if (heroVideo) {
+          heroVideo.src = src;
+          heroVideo.play();
+        }
+      }
+
       function addTextBubble() {
         console.log("addTextBubble called");
-      
+
         const inputField = document.getElementById('name-field');
         console.log("inputField:", inputField);
-      
+
         const textBubbleContainer = document.getElementById('text-bubble-container');
         console.log("textBubbleContainer:", textBubbleContainer);
-      
+
         const text = inputField.value.trim();
         console.log("text:", text);
-      
+
         if (text !== '') {
           const textBubble = document.createElement('div');
           console.log("Created textBubble element:", textBubble);
-      
+
           textBubble.className = 'text-bubble right';
           console.log("Set textBubble className to 'text-bubble right'");
-      
+
           textBubble.textContent = text;
           console.log("Set textBubble textContent to:", text);
-      
+
           textBubbleContainer.appendChild(textBubble);
           console.log("Appended textBubble to textBubbleContainer");
-      
+
           inputField.value = '';
           console.log("Cleared inputField value");
-      
+
           toggleButtonVisibility();
           console.log("Called toggleButtonVisibility");
-      
+
           // Scroll to the bottom of the container
           textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
           console.log("Scrolled to the bottom of textBubbleContainer");
-      
+
+          // Change the hero video to "Reading Message, Replying Back"
+          changeHeroVideo('assets/img/Reading Message, Replying Back.mov');
+
           // Simulate receiving a message
           setTimeout(() => {
             console.log("Simulating receiving a message");
             const receivedBubble = document.createElement('div');
             receivedBubble.className = 'text-bubble left';
-      
+
             const img = document.createElement('img');
             img.src = 'assets/img/my-profile-img.jpg';
             img.alt = 'Sender';
-      
+
             receivedBubble.appendChild(img);
-      
+
             const textNode = document.createTextNode(text); // For now, just echo the sent text
             receivedBubble.appendChild(textNode);
-      
+
             textBubbleContainer.appendChild(receivedBubble);
             console.log("Appended receivedBubble to textBubbleContainer");
-      
+
             // Scroll to the bottom of the container
             textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
             console.log("Scrolled to the bottom of textBubbleContainer");
-          }, 1000);
+
+            // Change the hero video to "Just sent the text, waiting for a response"
+            changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
+          }, 10000);
         } else {
           console.log("No text entered, skipping bubble creation");
         }
       }
 
+      // Add a "received" bubble when the page initially loads
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const textBubbleContainer = document.getElementById('text-bubble-container');
+      
+          // Simulate receiving an initial message when the page loads
+          const receivedBubble = document.createElement('div');
+          receivedBubble.className = 'text-bubble left';
+      
+          const img = document.createElement('img');
+          img.src = 'assets/img/my-profile-img.jpg';
+          img.alt = 'Sender';
+      
+          receivedBubble.appendChild(img);
+      
+          const initialMessage = document.createTextNode("Hi, im the AI version of Omar, built by Omar! Feel free to ask any questions about me!");
+          receivedBubble.appendChild(initialMessage);
+      
+          textBubbleContainer.appendChild(receivedBubble);
+          console.log("Appended initial receivedBubble to textBubbleContainer on page load");
+      
+          // Scroll to the bottom of the container
+          textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+          console.log("Scrolled to the bottom of textBubbleContainer after initial message");
+      
+          // Change the hero video
+          changeHeroVideo('assets/img/Initial Text.mov');
+        }, 3000); // 5000 milliseconds = 5 seconds
+      });
+      
   </script>
   
 <!-- Main JS File -->
