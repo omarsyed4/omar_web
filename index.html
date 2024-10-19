@@ -30,31 +30,31 @@
 
   <style>
 
-      .hero {
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-      }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
 
-      #contact {
-        position: absolute;
-        max-width: 40%;
-        top: 0;
-        left: 50;
-        z-index: 2; /* Higher z-index to make sure it's on top */
-        padding: 0px; /* Adjust as needed */
-        padding-top: 3%;
-        padding-left: 3%;
-        background-color: transparent; /* Ensure padding area is transparent */
-      }
+    #contact {
+      position: absolute;
+      max-width: 40%;
+      top: 0;
+      left: 50;
+      z-index: 2; /* Higher z-index to make sure it's on top */
+      padding: 0px; /* Adjust as needed */
+      padding-top: 3%;
+      padding-left: 3%;
+      background-color: transparent; /* Ensure padding area is transparent */
+    }
 
-      .hero-video {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
-      }
+    .hero-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
 
     .portfolio-info {
       flex-direction: column;
@@ -180,6 +180,12 @@
       box-sizing: border-box; /* Include padding and border in element's total width and height */
       font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
       word-wrap: break-word;
+    }
+
+    input:disabled {
+      background-color: transparent; /* Transparent background */
+      border: 3px solid rgb(30, 32, 32); /* White border */
+      cursor: not-allowed; /* Change cursor to indicate it's disabled */
     }
     
     .custom-input:focus {
@@ -474,6 +480,28 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   
   <script>
+
+      function disableChatInput() {
+        const inputField = document.getElementById('name-field');
+        const submitButton = document.querySelector('.submit-button');
+        
+        inputField.disabled = true; // Disable the input field
+        inputField.dataset.placeholder = inputField.placeholder; // Store the placeholder text
+        inputField.placeholder = ''; // Remove the placeholder text
+        submitButton.disabled = true; // Disable the submit button
+        submitButton.classList.add('hidden'); // Hide the submit button
+      }
+
+      function enableChatInput() {
+        const inputField = document.getElementById('name-field');
+        const submitButton = document.querySelector('.submit-button');
+        
+        inputField.disabled = false; // Enable the input field
+        inputField.placeholder = inputField.dataset.placeholder; // Restore the placeholder text
+        submitButton.disabled = false; // Enable the submit button
+        toggleButtonVisibility(); // Update the visibility of the submit button based on input field state
+      }      
+
       function toggleButtonVisibility() {
           const inputField = document.getElementById('name-field');
           const submitButton = document.querySelector('.submit-button');
@@ -511,6 +539,8 @@
         console.log("text:", text);
 
         if (text !== '') {
+          disableChatInput(); // Disable chat input
+
           // Remove any existing read receipt before adding a new one
           const existingReadReceipt = document.querySelector('.read-receipt');
           if (existingReadReceipt) {
@@ -590,6 +620,7 @@
             setTimeout(() => {
               console.log("Changing hero video to 'Looped Waiting.mov' after 2 seconds");
               changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
+              enableChatInput(); // Enable chat input after receiving the message
             }, 4000); // 2000 milliseconds = 2 seconds
           }, 10000);
         } else {
@@ -597,32 +628,33 @@
         }
       }
 
-
       // Add a "received" bubble when the page initially loads
       window.addEventListener('DOMContentLoaded', () => {
+        disableChatInput(); // Disable chat input on page load
+
         setTimeout(() => {
           const textBubbleContainer = document.getElementById('text-bubble-container');
-      
+
           // Simulate receiving an initial message when the page loads
           const receivedBubble = document.createElement('div');
           receivedBubble.className = 'text-bubble left';
-      
+
           const img = document.createElement('img');
           img.src = 'assets/img/my-profile-img.jpg';
           img.alt = 'Sender';
-      
+
           receivedBubble.appendChild(img);
-      
+
           const initialMessage = document.createTextNode("Hi, im the AI version of Omar, built by Omar! Feel free to ask any questions about me!");
           receivedBubble.appendChild(initialMessage);
-      
+
           textBubbleContainer.appendChild(receivedBubble);
           console.log("Appended initial receivedBubble to textBubbleContainer on page load");
-      
+
           // Scroll to the bottom of the container
           textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
           console.log("Scrolled to the bottom of textBubbleContainer after initial message");
-      
+
           // Change the hero video
           changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
           
@@ -632,8 +664,15 @@
             changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
           }, 4000); // 2000 milliseconds = 2 seconds
         }, 2000); // 5000 milliseconds = 5 seconds
+
+        // Enable chat input 3 seconds after the website has loaded
+        setTimeout(() => {
+          console.log("Enabling chat input 3 seconds after the website has loaded");
+          enableChatInput();
+        }, 5000); // 3000 milliseconds = 3 seconds
       });
-      
+
+
   </script>
   
 <!-- Main JS File -->
