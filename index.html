@@ -183,6 +183,64 @@
       z-index: 1;
     }
 
+    /* Styles for screens 1200px and below */
+    @media (max-width: 1200px) {
+      #contact {
+        position: relative;
+        padding: 0px; /* Adjust as needed */
+        padding-top: 10%;
+        padding-bottom: 0%;
+        padding-left: 0%;
+        min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+        margin: 0 auto; /* Center the section horizontally */
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
+
+      .container {
+        width: 100%; /* Ensure the container takes the full width */
+        min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+      }
+
+      .row {
+        width: 100%; /* Ensure the row takes the full width */
+        min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+      }
+
+      .custom-container {
+        width: 100%; /* Ensure the custom container takes the full width */
+        min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+      }
+
+
+      
+    
+      #hero {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 0px; /* Adjust as needed */
+        padding-bottom: 0px; /* Ensure no padding at the bottom */
+        margin-bottom: 0px; /* Ensure no margin at the bottom */
+        position: relative;
+      }
+    
+      .hero-video {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* Ensures video resizes properly */
+      }
+    
+      #about {
+        margin-top: 0; /* Remove any top margin */
+        padding-top: 0; /* Remove any top padding */
+      }
+    }
+
+
     .portfolio-info {
       flex-direction: column;
     }
@@ -373,12 +431,12 @@
 
   <header id="header">
     <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav class="d-none d-xl-block">
     <div class="header-container">
       <div class="logo">
         <img src="assets/img/my-profile-img.jpg" alt="Company Logo">
         <span class="company-name">Omar Syed</span>
       </div>
-      <nav>
         <ul class="nav-list">
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -403,8 +461,23 @@
     </div>
   </header>
 
-
   <main class="main">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="custom-container">
+            <div id="text-bubble-container" class="text-bubble-container"></div>
+            <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()" onkeydown="handleEnterKey(event)">
+            <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
+              <i class="bi bi-arrow-up-short"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Contact Section -->
+
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
       <video src="assets/img/Initial Text.mov" autoplay loop muted data-aos="fade-in" class="hero-video"></video>
@@ -612,21 +685,6 @@
 
     </section><!-- /Resume Section -->
 
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="custom-container">
-            <div id="text-bubble-container" class="text-bubble-container"></div>
-            <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()" onkeydown="handleEnterKey(event)">
-            <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
-              <i class="bi bi-arrow-up-short"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section><!-- /Contact Section -->
   </main>
 
 
@@ -838,12 +896,6 @@
           enableChatInput();
         }, 5000); // 3000 milliseconds = 3 seconds
       });
-
-      window.addEventListener('resize', () => {
-        const viewportWidth = window.innerWidth;
-        console.log(`Current viewport width: ${viewportWidth}px`);
-      });
-
 
   </script>
   

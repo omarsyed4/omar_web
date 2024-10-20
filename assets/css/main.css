@@ -190,19 +190,6 @@ h6 {
   background: var(--accent-color);
 }
 
-@media (min-width: 1200px) {
-
-  .header~main,
-  .header~#footer {
-    margin-left: 300px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .header {
-    left: -100%;
-  }
-}
 
 .header.header-show {
   left: 0;
@@ -230,6 +217,7 @@ h6 {
   color: var(--contrast-color);
   background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
 }
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
