@@ -52,7 +52,7 @@
     .logo img {
       height: 100px; /* Adjust the height of the logo */
       width: 100px; /* Ensure the width matches the height to make it a circle */
-      border-radius: 30%; /* Make the image a circle */
+      border-radius: 45%; /* Make the image a circle */
       object-fit: cover; /* Ensure the image covers the entire area */
     }
 
@@ -93,6 +93,19 @@
     
     #header .nav-list a:hover {
       color: var(--accent-color);
+    }
+
+    .accent-button {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      padding: 20px;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .accent-button:hover {
+      background-color: darken(var(--accent-color), 10%);
+      color: var(--default-color);
     }
 
 
@@ -323,9 +336,10 @@
       <nav>
         <ul class="nav-list">
           <li><a href="#hero">Home</a></li>
-          <li><a href="#projects">Projects</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact" class="accent-button">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -417,31 +431,64 @@
     <section id="resume" class="resume section">
 
       <!-- Section Title -->
-      <div class="container section-title d-flex align-items-center" data-aos="fade-up">
-        <h2 class="mr-3">Resume</h2>
-        <a href="path/to/your/resume.pdf" class="btn btn-primary" download>
-          Download PDF
-        </a>
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resume</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
+
         <div class="row">
-          
-          <!-- Education -->
+
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+
             <h3 class="resume-title">Education</h3>
-            <div class="resume-item pb-0">
+            <div class="resume-item">
               <h4>B.S. in Computer Science</h4>
               <h5>Expected Graduation: Spring 2027</h5>
               <p><em>University of Central Florida, Orlando, FL</em></p>
-            </div><!-- End Resume Item -->
+            </div><!-- Edn Resume Item -->
+
+            <h3 class="resume-title">Projects</h3>
+            <div class="resume-item">
+              <h4>Black and Gold Analytics Website</h4>
+              <h5>Oct. 2024 - Dec. 2024</h5>
+              <p>
+                Led front-end development using Bootstrap to create a responsive and user-friendly interface for the Black & Gold Sports Analytics Club website. Integrated multiple social media APIs and Google Calendar to enhance the club’s online presence and member engagement.
+              </p>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Investment Management Mobile App</h4>
+              <h5>Oct. 2023 - Oct. 2024</h5>
+              <p>
+                Developed a Flutter and Firebase-based app for investment management. Designed UI/UX and NoSQL backend structure and built an admin portal using React and TypeScript. Integrated graph visualizations to display financial data, boosting user insights.
+              </p>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Description of Incident Maker (Law Firm)</h4>
+              <h5>Feb. 2023 - June. 2023</h5>
+              <p>
+                Developed a Windows desktop app using C# in a .NET framework, automating case report generation and reducing call times by up to 5 minutes. Received positive feedback and invited to collaborate with the Salesforce development team.
+              </p>
+            </div><!-- Edn Resume Item -->
+
+            <h3 class="resume-title">Skills</h3>
+            <div class="resume-item">
+              <ul>
+                <li>Languages: C, C#, Java, Python, TypeScript, JavaScript, Dart, Swift</li>
+                <li>Frameworks: React, Flutter, Node.js, WPF, .NET, Bootstrap</li>
+                <li>Tools: Git, GitHub, Android Studio, XCode, Firebase, VScode, Visual Studio, Figma, Sketch</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
           </div>
 
-          <!-- Work Experience -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <h3 class="resume-title">Work Experience</h3>
-            
-            <div class="resume-item">
+
+                        <div class="resume-item">
               <h4>Full Stack Software Engineer</h4>
               <h5>Jan 2024 - Sept. 2024</h5>
               <p><em>Hybrid - Lake Mary, FL</em></p>
@@ -467,49 +514,11 @@
                 <li>Designed and presented a Windows desktop app, receiving positive feedback from department managers.</li>
               </ul>
             </div><!-- End Resume Item -->
-            
-          </div>
 
-          <!-- Projects -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="resume-title">Projects</h3>
-
-            <div class="resume-item">
-              <h4>Black and Gold Analytics Website</h4>
-              <p>
-                Led front-end development using Bootstrap to create a responsive and user-friendly interface for the Black & Gold Sports Analytics Club website. Integrated multiple social media APIs and Google Calendar to enhance the club’s online presence and member engagement.
-              </p>
-            </div><!-- End Projects Item -->
-
-            <div class="resume-item">
-              <h4>Investment Management Mobile App</h4>
-              <p>
-                Developed a Flutter and Firebase-based app for investment management. Designed UI/UX and NoSQL backend structure and built an admin portal using React and TypeScript. Integrated graph visualizations to display financial data, boosting user insights.
-              </p>
-            </div><!-- End Projects Item -->
-
-            <div class="resume-item">
-              <h4>Description of Incident Maker (Law Firm)</h4>
-              <p>
-                Developed a Windows desktop app using C# in a .NET framework, automating case report generation and reducing call times by up to 5 minutes. Received positive feedback and invited to collaborate with the Salesforce development team.
-              </p>
-            </div><!-- End Projects Item -->
-
-          </div>
-
-          <!-- Skills -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <h3 class="resume-title">Skills</h3>
-            <div class="resume-item">
-              <ul>
-                <li>Languages: C, C#, Java, Python, TypeScript, JavaScript, Dart, Swift</li>
-                <li>Frameworks: React, Flutter, Node.js, WPF, .NET, Bootstrap</li>
-                <li>Tools: Git, GitHub, Android Studio, XCode, Firebase, VScode, Visual Studio, Figma, Sketch</li>
-              </ul>
-            </div><!-- End Skills Item -->
           </div>
 
         </div>
+
       </div>
 
     </section><!-- /Resume Section -->
