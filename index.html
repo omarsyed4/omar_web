@@ -21,6 +21,7 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
@@ -35,32 +36,31 @@
       top: 0;
       width: 100%;
       z-index: 1000; /* Ensure it stays on top of other elements */
-      padding: 1%; /* Increase padding to make the header larger */
+      padding: 0.8%; /* Decrease padding to make the header smaller */
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.01)); /* Add gradient background */
       backdrop-filter: blur(5px); /* Apply blur effect */
     }
-
-
+    
     .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 10px; /* Add padding to the sides */
+      padding: 10px; /* Decrease padding to the sides */
     }
     
     .logo img {
-      height: 100px; /* Adjust the height of the logo */
-      width: 100px; /* Ensure the width matches the height to make it a circle */
-      border-radius: 45%; /* Make the image a circle */
+      height: 50px; /* Decrease the height of the logo */
+      width: 50px; /* Ensure the width matches the height to make it a circle */
+      border-radius: 50%; /* Make the image a circle */
       object-fit: cover; /* Ensure the image covers the entire area */
     }
-
+    
     .company-name {
-      font-size: 40px; /* Adjust the font size of the company name */
+      font-size: 25px; /* Decrease the font size of the company name */
       font-weight: bold;
       color: var(--default-color); /* Use the default color */
-      padding-left: 30px; /* Add padding from the left */
+      padding-left: 15px; /* Decrease padding from the left */
     }
     
     #header nav {
@@ -72,9 +72,9 @@
     #header .nav-list {
       list-style: none;
       display: flex;
-      gap: 60px;
+      gap: 30px; /* Decrease gap between items */
       padding: 0;
-      padding-right: 40px;
+      padding-right: 20px; /* Decrease padding to the right */
       margin: 0;
     }
     
@@ -85,33 +85,78 @@
     #header .nav-list a {
       text-decoration: none;
       color: var(--default-color);
-      padding: 10px 15px;
+      padding: 5px 10px; /* Decrease padding */
       transition: color 0.3s;
-      font-size: 30px; /* Increase font size */
+      font-size: 20px; /* Decrease font size */
       font-weight: 550;
     }
     
     #header .nav-list a:hover {
       color: var(--accent-color);
     }
-
+    
     .accent-button {
       background-color: var(--accent-color);
       color: var(--contrast-color);
-      padding: 20px;
-      border-radius: 20px;
+      padding: 10px; /* Decrease padding */
+      border-radius: 10px; /* Decrease border radius */
       transition: background-color 0.3s, color 0.3s;
+      position: relative;
     }
-
+    
     .accent-button:hover {
       background-color: darken(var(--accent-color), 10%);
       color: var(--default-color);
     }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0; /* Align the dropdown menu to the right */
+      background-color: var(--accent-color);
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 10px; /* Match the button's border radius */
+      padding: 5px 0; /* Add padding to the dropdown menu */
+    }
+    
+    .dropdown-menu a {
+      color: var(--contrast-color);
+      padding: 8px 16px; /* Adjust padding to fit the text */
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s, color 0.3s;
+      white-space: nowrap; /* Prevent text from wrapping */
+    }
+    
+    .dropdown-menu a i {
+      margin-right: 8px; /* Space between icon and text */
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: rgba(0, 0, 0, 0.1); /* Slightly darken the background */
+      color: var(--contrast-color); /* Ensure text color remains readable */
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
 
 
 
 
 
+
+
+
+
+    
     .hero {
       position: relative;
       overflow: hidden;
@@ -339,7 +384,20 @@
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact" class="accent-button">Contact</a></li>
+          <li class="dropdown">
+            <a class="accent-button dropdown-toggle">Contact</a>
+            <div class="dropdown-menu">
+              <a href="https://www.linkedin.com/in/your-profile" target="_blank">
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/your-username" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="path/to/your-resume.pdf" download>
+                <i class="fas fa-file-download"></i> Download Resume
+              </a>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
@@ -465,7 +523,6 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Resume</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -780,6 +837,11 @@
           console.log("Enabling chat input 3 seconds after the website has loaded");
           enableChatInput();
         }, 5000); // 3000 milliseconds = 3 seconds
+      });
+
+      window.addEventListener('resize', () => {
+        const viewportWidth = window.innerWidth;
+        console.log(`Current viewport width: ${viewportWidth}px`);
       });
 
 
