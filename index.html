@@ -112,7 +112,6 @@
     .accent-button {
       background-color: var(--accent-color);
       color: var(--contrast-color);
-      padding: 10px; /* Decrease padding */
       border-radius: 10px; /* Decrease border radius */
       transition: background-color 0.3s, color 0.3s;
       position: relative;
@@ -132,11 +131,10 @@
       display: none;
       position: absolute;
       right: 0; /* Align the dropdown menu to the right */
-      background-color: var(--accent-color);
+      background-color: darken(var(--accent-color), 50%);
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       border-radius: 10px; /* Match the button's border radius */
-      padding: 5px 0; /* Add padding to the dropdown menu */
     }
     
     .dropdown-menu a {
@@ -164,7 +162,23 @@
   
 
 
+    .download-button {
+      background-color: transparent; /* Change to your preferred color */
+      color: white;
+      border: 2px solid #495bc5; /* Add a border */
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
 
+    .download-button i {
+      margin-right: 5px;
+    }
 
 
 
@@ -564,7 +578,7 @@
                 <i class="fab fa-github"></i> GitHub
               </a>
               <a href="path/to/your-resume.pdf" download>
-                <i class="fas fa-file-download"></i> Download Resume
+                <i class="bi bi-download"></i> Download Resume
               </a>
           </div>
           </li>
@@ -726,6 +740,9 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Resume</h2>
+        <button type="button" onclick="window.location.href='path/to/your/resume.pdf'" class="download-button">
+          <i class="bi bi-download"></i> Download PDF
+        </button>
       </div><!-- End Section Title -->
 
       <div class="container">
