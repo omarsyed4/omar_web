@@ -259,7 +259,10 @@
       max-height: 180px; /* Adjust as needed */
       overflow-y: auto; /* Scroll if content overflows */
       margin-bottom: 10px; /* Space between bubbles and input */
-      border-radius: 30px;
+        border-radius: 30px 30px 0 0; /* Apply border-radius only to the top corners */
+        padding: 0;
+        padding-top: 3%;
+        padding-bottom: 1%;
       display: flex;
       flex-direction: column;
       width: 100%; /* Full width of the parent container */
@@ -363,6 +366,49 @@
       font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
     }
     
+    /* Typing bubble with three dots */
+    .typing-bubble {
+      background-color: rgb(38, 40, 40);
+      color: white;
+      border-radius: 15px;
+      padding: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+      max-width: 60%;
+      word-wrap: break-word;
+      position: relative;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+    }
+
+    .typing-dots {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 2px;
+      background-color: grey;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+    }
+
+    .typing-dots:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-dots:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
     .submit-button {
       position: absolute;
       right: 15px; /* Adjust position to fit inside the input field */
@@ -381,8 +427,6 @@
       font-family: Helvetica, Arial, sans-serif; /* Set font to Helvetica */
     }
 
-
-    
     .submit-button i {
       font-size: 27px; /* Adjust icon size to fit inside the button */
     }
@@ -621,6 +665,12 @@
           </div>
         </div>
     </section><!-- /Contact Section -->
+
+
+
+
+
+
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
