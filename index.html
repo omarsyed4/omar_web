@@ -259,16 +259,12 @@
       max-height: 180px; /* Adjust as needed */
       overflow-y: auto; /* Scroll if content overflows */
       margin-bottom: 10px; /* Space between bubbles and input */
-        border-radius: 30px 30px 0 0; /* Apply border-radius only to the top corners */
-        padding: 0;
-        padding-top: 3%;
-        padding-bottom: 1%;
+      border-radius: 30px;
       display: flex;
       flex-direction: column;
       width: 100%; /* Full width of the parent container */
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0)); /* Gradient at the top */
     }
-
+    
     /* Custom scrollbar styles */
     .text-bubble-container::-webkit-scrollbar {
         width: 5px; /* Width of the scrollbar */
@@ -384,8 +380,8 @@
 
     .typing-dots {
       display: inline-block;
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       margin-right: 2px;
       background-color: grey;
       border-radius: 50%;
@@ -949,106 +945,129 @@
       }
 
       function addTextBubble() {
-        console.log("addTextBubble called");
+          console.log("addTextBubble called");
+      
+          const inputField = document.getElementById('name-field');
+          console.log("inputField:", inputField);
+      
+          const textBubbleContainer = document.getElementById('text-bubble-container');
+          console.log("textBubbleContainer:", textBubbleContainer);
+      
+          const text = inputField.value.trim();
+          console.log("text:", text);
+      
+          if (text !== '') {
+              disableChatInput(); // Disable chat input
+      
+              // Remove any existing read receipt before adding a new one
+              const existingReadReceipt = document.querySelector('.read-receipt');
+              if (existingReadReceipt) {
+                  existingReadReceipt.remove();
+                  console.log("Removed existing read receipt");
+              }
+      
+              // Create the sent text bubble (right-aligned)
+              const textBubble = document.createElement('div');
+              console.log("Created textBubble element:", textBubble);
+      
+              textBubble.className = 'text-bubble right'; // Right-aligned (sent message)
+              console.log("Set textBubble className to 'text-bubble right'");
+      
+              textBubble.textContent = text;
+              console.log("Set textBubble textContent to:", text);
+      
+              textBubbleContainer.appendChild(textBubble); // Append the text bubble
+              console.log("Appended textBubble to textBubbleContainer");
+      
+              // Add the read receipt under the right-aligned bubble after 2 seconds
+              setTimeout(() => {
+                  const readReceipt = document.createElement('div');
+                  const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                  readReceipt.className = 'read-receipt';
+                  readReceipt.textContent = `Read: ${currentTime}`;
+                  textBubbleContainer.appendChild(readReceipt);
+                  console.log("Appended readReceipt under sent message");
+                  textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+              }, 1000);
+              
+              // Add the typing bubble 1 second after the read receipt
+              setTimeout(() => {
+                  const typingBubble = document.createElement('div');
+                  typingBubble.className = 'typing-bubble';
+                  typingBubble.innerHTML = `
+                      <div class="typing-dots"></div>
+                      <div class="typing-dots"></div>
+                      <div class="typing-dots"></div>
+                  `;
+                  textBubbleContainer.appendChild(typingBubble);
+                  console.log("Appended typingBubble under read receipt");
+                  textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+              }, 2500); // 2000ms for read receipt + 1000ms delay for typing bubble  
 
-        const inputField = document.getElementById('name-field');
-        console.log("inputField:", inputField);
-
-        const textBubbleContainer = document.getElementById('text-bubble-container');
-        console.log("textBubbleContainer:", textBubbleContainer);
-
-        const text = inputField.value.trim();
-        console.log("text:", text);
-
-        if (text !== '') {
-          disableChatInput(); // Disable chat input
-
-          // Remove any existing read receipt before adding a new one
-          const existingReadReceipt = document.querySelector('.read-receipt');
-          if (existingReadReceipt) {
-            existingReadReceipt.remove();
-            console.log("Removed existing read receipt");
+              inputField.value = ''; // Clear the input field
+              console.log("Cleared inputField value");
+      
+              toggleButtonVisibility(); // Update UI based on input field state
+              console.log("Called toggleButtonVisibility");
+      
+              // Scroll to the bottom of the container
+              textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+              console.log("Scrolled to the bottom of textBubbleContainer");
+      
+              // Change the hero video to "Reading Message, Replying Back"
+              changeHeroVideo('assets/img/Reading Message, Replying Back.mov');
+      
+              // Wait 2 seconds and then change the video to "Looped Waiting.mov"
+              setTimeout(() => {
+                  console.log("Changing hero video to 'Replying Loop.mov' after 2 seconds");
+                  changeHeroVideo('assets/img/Replying Loop.mov', true); // Enable looping for the "Looped Waiting.mov" video
+              }, 5000);
+      
+              // Simulate receiving a message
+              setTimeout(() => {
+                  console.log("Simulating receiving a message");
+      
+                  // Remove the typing bubble if it exists
+                  const typingBubble = document.querySelector('.typing-bubble');
+                  if (typingBubble) {
+                      typingBubble.remove();
+                      console.log("Removed typingBubble");
+                  }
+      
+                  const receivedBubble = document.createElement('div');
+                  receivedBubble.className = 'text-bubble left';
+      
+                  const img = document.createElement('img');
+                  img.src = 'assets/img/my-profile-img.jpg';
+                  img.alt = 'Sender';
+      
+                  receivedBubble.appendChild(img);
+      
+                  const textNode = document.createTextNode(text); // For now, just echo the sent text
+                  receivedBubble.appendChild(textNode);
+      
+                  textBubbleContainer.appendChild(receivedBubble);
+                  console.log("Appended receivedBubble to textBubbleContainer");
+      
+                  // Scroll to the bottom of the container
+                  textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
+                  console.log("Scrolled to the bottom of textBubbleContainer");
+      
+                  // Change the hero video
+                  changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
+      
+                  // Wait 2 seconds and then change the video to "Looped Waiting.mov"
+                  setTimeout(() => {
+                      console.log("Changing hero video to 'Looped Waiting.mov' after 2 seconds");
+                      changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
+                      enableChatInput(); // Enable chat input after receiving the message
+                  }, 4000); // 2000 milliseconds = 2 seconds
+              }, 10000);
+          } else {
+              console.log("No text entered, skipping bubble creation");
           }
-
-          // Create the sent text bubble (right-aligned)
-          const textBubble = document.createElement('div');
-          console.log("Created textBubble element:", textBubble);
-
-          textBubble.className = 'text-bubble right'; // Right-aligned (sent message)
-          console.log("Set textBubble className to 'text-bubble right'");
-
-          textBubble.textContent = text;
-          console.log("Set textBubble textContent to:", text);
-
-          textBubbleContainer.appendChild(textBubble); // Append the text bubble
-          console.log("Appended textBubble to textBubbleContainer");
-
-          // Add the read receipt under the right-aligned bubble after 2 seconds
-          setTimeout(() => {
-            const readReceipt = document.createElement('div');
-            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            readReceipt.className = 'read-receipt';
-            readReceipt.textContent = `Read: ${currentTime}`;
-            textBubbleContainer.appendChild(readReceipt);
-            console.log("Appended readReceipt under sent message");
-            textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
-          }, 1000); 
-          
-          inputField.value = ''; // Clear the input field
-          console.log("Cleared inputField value");
-
-          toggleButtonVisibility(); // Update UI based on input field state
-          console.log("Called toggleButtonVisibility");
-
-          // Scroll to the bottom of the container
-          textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
-          console.log("Scrolled to the bottom of textBubbleContainer");
-
-          // Change the hero video to "Reading Message, Replying Back"
-          changeHeroVideo('assets/img/Reading Message, Replying Back.mov');
-          
-          // Wait 2 seconds and then change the video to "Looped Waiting.mov"
-          setTimeout(() => {
-            console.log("Changing hero video to 'Replying Loop.mov' after 2 seconds");
-            changeHeroVideo('assets/img/Replying Loop.mov', true); // Enable looping for the "Looped Waiting.mov" video
-          }, 5000); 
-
-          // Simulate receiving a message
-          setTimeout(() => {
-            console.log("Simulating receiving a message");
-            const receivedBubble = document.createElement('div');
-            receivedBubble.className = 'text-bubble left';
-
-            const img = document.createElement('img');
-            img.src = 'assets/img/my-profile-img.jpg';
-            img.alt = 'Sender';
-
-            receivedBubble.appendChild(img);
-
-            const textNode = document.createTextNode(text); // For now, just echo the sent text
-            receivedBubble.appendChild(textNode);
-
-            textBubbleContainer.appendChild(receivedBubble);
-            console.log("Appended receivedBubble to textBubbleContainer");
-
-            // Scroll to the bottom of the container
-            textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
-            console.log("Scrolled to the bottom of textBubbleContainer");
-
-            // Change the hero video
-            changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
-            
-            // Wait 2 seconds and then change the video to "Looped Waiting.mov"
-            setTimeout(() => {
-              console.log("Changing hero video to 'Looped Waiting.mov' after 2 seconds");
-              changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
-              enableChatInput(); // Enable chat input after receiving the message
-            }, 4000); // 2000 milliseconds = 2 seconds
-          }, 10000);
-        } else {
-          console.log("No text entered, skipping bubble creation");
-        }
       }
+
 
       function pasteQuestion(question) {
         document.getElementById('name-field').value = question;
