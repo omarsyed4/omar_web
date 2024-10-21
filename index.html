@@ -40,6 +40,10 @@
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.01)); /* Add gradient background */
       backdrop-filter: blur(5px); /* Apply blur effect */
     }
+
+    #small-screen-header {
+      display: none; /* Initially hide the small screen header */
+    }
     
     .header-container {
       display: flex;
@@ -192,93 +196,70 @@
       z-index: 1;
     }
 
-    @media (max-width: 1200px) {
-    
-        #header {
-            display: none; /* Hide the original header */
-        }
-    
-        #small-screen-header {
-            display: flex; /* Use flexbox for centering */
-            flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items horizontally */
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.01)); /* Add gradient background */
-            backdrop-filter: blur(5px); /* Apply blur effect */
-            padding: 10px; /* Add padding */
-        }
-    
-        .small-nav-list {
-            list-style: none; /* Remove list style */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margin */
-            display: flex; /* Use flexbox */
-            justify-content: center; /* Center items horizontally */
-            gap: 20px; /* Adjust gap between items if needed */
-        }
-    
-        .small-nav-list li {
-            display: inline; /* Display list items inline */
-        }
-    
-        .small-nav-list a {
-            text-decoration: none; /* Remove underline */
-            color: #fff; /* Set text color */
-            padding: 10px; /* Add padding */
-        }
-    
-        #contact {
-            position: relative;
-            padding: 0px; /* Adjust as needed */
-            padding-top: 10%;
-            padding-bottom: 0%;
-            padding-left: 0%;
-            min-width: 100vw; /* Ensure it does not shrink below the screen's width */
-            background-color: rgba(0, 0, 0, 0); /* Semi-transparent background for better readability */
-            margin: 0 auto; /* Center the section horizontally */
-            display: flex; /* Use flexbox */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-        }
-    
-        .container {
-            width: 100%; /* Ensure the container takes the full width */
-            min-width: 100vw; /* Ensure it does not shrink below the screen's width */
-        }
-    
-        .row {
-            width: 100%; /* Ensure the row takes the full width */
-            min-width: 100vw; /* Ensure it does not shrink below the screen's width */
-        }
-    
-        .custom-container {
-            width: 100%; /* Ensure the custom container takes the full width */
-            min-width: 100vw; /* Ensure it does not shrink below the screen's width */
-        }
-    
-        #about {
-            padding: 0px;
-            padding-top: 0%;
-            padding-bottom: 0%;
-            padding-left: 0%;
-        }
-    
-        #hero {
-            display: block;
-            width: 100%;
-            height: auto;
-            padding: 0px; /* Adjust as needed */
-            padding-bottom: 0px; /* Ensure no padding at the bottom */
-            margin-bottom: 0px; /* Ensure no margin at the bottom */
-            position: relative;
-        }
-    
-        .hero-video {
-            position: relative;
-            width: 100%;
-            height: auto;
-            object-fit: cover; /* Ensures video resizes properly */
-        }
-    }
+    @media (max-width: 1000px) {
+  /* Set the main class to flex and stack items in a column */
+  .main {
+    display: flex;
+    flex-direction: column; /* Stack all sections vertically */
+    padding: 0; /* Remove any extra padding */
+    margin: 0; /* Remove any margin */
+  }
+
+  /* Ensure individual sections take full width */
+  .main section {
+    width: 100%;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+
+  /* Hero Section - Set specific height for the video */
+  #hero {
+    height: auto; /* Allow the height to adjust */
+  }
+
+  .hero-video {
+    width: 100%;
+    height: auto; /* Adjust height dynamically */
+    object-fit: cover; /* Cover the entire area */
+    object-position: center; /* Center the video */
+  }
+
+  #contact {
+    width: 100%;
+    top: 0;
+    left: 0;
+    min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+    padding: 0%; /* Adjust as needed */
+      padding-top: 10%;
+      padding-left: 0%;
+
+  }
+
+  /* Adjust content layout */
+  #about, #projects, #resume {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0); /* Add a slight background color */
+  }
+
+  /* Remove any grid or row structure to make everything stack naturally */
+  .row, .gy-4, .container {
+    display: block; /* Ensure it's a block layout */
+    width: 100%; /* Take the full width */
+    margin: 0;
+  }
+
+  /* Optional: Style adjustments for text and buttons to fit mobile */
+  h2, h4, p, ul {
+    margin-bottom: 15px;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 100%; /* Full width buttons for better mobile interaction */
+    padding: 10px;
+  }
+}
+
 
     
     .portfolio-info {
@@ -316,11 +297,11 @@
       border-radius: 30px;
       padding: 10px;
       position: relative; /* To position the button inside the container */
-      width: 50vw; /* Fixed width, adjust as needed */
+      width: 100vw; /* Fixed width, adjust as needed */
     }
     
     .text-bubble-container {
-      max-height: 300px; /* Adjust as needed */
+      max-height: 180px; /* Adjust as needed */
       overflow-y: auto; /* Scroll if content overflows */
       margin-bottom: 10px; /* Space between bubbles and input */
       border-radius: 30px;
