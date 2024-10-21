@@ -186,9 +186,17 @@
       z-index: 1;
     }
 
+    .hero-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
     #contact {
       position: absolute;
-      max-width: 40%;
+      max-width: 50%;
       top: 0;
       left: 50;
       z-index: 2; /* Higher z-index to make sure it's on top */
@@ -198,13 +206,30 @@
       background-color: transparent; /* Ensure padding area is transparent */
     }
 
-    .hero-video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
+    .question-buttons {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      width: fit-content;
+      padding: 0%;
+      padding-top: 1%;
+      padding-left: 1%;
+      gap: 1px; /* Add space between buttons */
     }
+
+    .question-buttons button {
+      background-color: transparent;
+      color: rgb(220, 220, 220);
+      border: none;
+      text-align: left;
+      padding: 0px;
+        padding-top: 0%;
+        padding-bottom: 0%;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    
 
 
 
@@ -390,7 +415,7 @@
     width: 100%;
     min-width: 100vw; /* Ensure it does not shrink below the screen's width */
     padding: 0%; /* Adjust as needed */
-      padding-top: 40%;
+      padding-top: 30%;
       padding-left: 0%;
 
   }
@@ -547,11 +572,10 @@
 
   <main class="main">
 
-    <!-- Contact Section -->
     <section id="contact" class="contact section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-          <div class="custom-container">
+          <div class="custom-container" data-aos="fade-up" data-aos-delay="100">
             <div id="text-bubble-container" class="text-bubble-container"></div>
             <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()" onkeydown="handleEnterKey(event)">
             <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
@@ -559,7 +583,15 @@
             </button>
           </div>
         </div>
-      </div>
+          <div class="question-buttons" data-aos="fade-up" data-aos-delay="100">
+            <button type="button" onclick="pasteQuestion('What are your hours of operation?')">
+              <i class="bi bi-magic"></i> What skills are you proficient in?
+            </button>
+            <button type="button" onclick="pasteQuestion('How can I contact support?')">
+              <i class="bi bi-magic"></i> Explain the projects you've done so far.
+            </button>
+          </div>
+        </div>
     </section><!-- /Contact Section -->
 
     <!-- Hero Section -->
@@ -936,6 +968,12 @@
           console.log("No text entered, skipping bubble creation");
         }
       }
+
+      function pasteQuestion(question) {
+        document.getElementById('name-field').value = question;
+        toggleButtonVisibility();
+      }
+
 
       // Add a "received" bubble when the page initially loads
       window.addEventListener('DOMContentLoaded', () => {
