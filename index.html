@@ -31,7 +31,7 @@
 
   <style>
 
-    #header, #small-screen-header {
+  #header {
       position: fixed;
       top: 0;
       width: 100%;
@@ -42,8 +42,19 @@
     }
 
     #small-screen-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000; /* Ensure it stays on top of other elements */
+      padding: 3%; /* Decrease padding to make the header smaller */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.01)); /* Add gradient background */
+      backdrop-filter: blur(5px); /* Apply blur effect */
       display: none; /* Initially hide the small screen header */
+      display: flex; /* Use Flexbox */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
     }
+
     
     .header-container {
       display: flex;
@@ -76,9 +87,8 @@
     #header .nav-list, .small-nav-list {
       list-style: none;
       display: flex;
-      gap: 30px; /* Decrease gap between items */
+      gap: 10px; /* Decrease gap between items */
       padding: 0;
-      padding-right: 20px; /* Decrease padding to the right */
       margin: 0;
     }
     
@@ -196,100 +206,6 @@
       z-index: 1;
     }
 
-    @media (max-width: 1000px) {
-  /* Set the main class to flex and stack items in a column */
-  .main {
-    display: flex;
-    flex-direction: column; /* Stack all sections vertically */
-    padding: 0; /* Remove any extra padding */
-    margin: 0; /* Remove any margin */
-  }
-
-  /* Ensure individual sections take full width */
-  .main section {
-    width: 100%;
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-  }
-
-  /* Hero Section - Set specific height for the video */
-  #hero {
-    height: auto; /* Allow the height to adjust */
-  }
-
-  .hero-video {
-    width: 100%;
-    height: auto; /* Adjust height dynamically */
-    object-fit: cover; /* Cover the entire area */
-    object-position: center; /* Center the video */
-  }
-
-  #contact {
-    width: 100%;
-    top: 0;
-    left: 0;
-    min-width: 100vw; /* Ensure it does not shrink below the screen's width */
-    padding: 0%; /* Adjust as needed */
-      padding-top: 10%;
-      padding-left: 0%;
-
-  }
-
-  /* Adjust content layout */
-  #about, #projects, #resume {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0); /* Add a slight background color */
-  }
-
-  /* Remove any grid or row structure to make everything stack naturally */
-  .row, .gy-4, .container {
-    display: block; /* Ensure it's a block layout */
-    width: 100%; /* Take the full width */
-    margin: 0;
-  }
-
-  /* Optional: Style adjustments for text and buttons to fit mobile */
-  h2, h4, p, ul {
-    margin-bottom: 15px;
-  }
-
-  button {
-    margin-top: 10px;
-    width: 100%; /* Full width buttons for better mobile interaction */
-    padding: 10px;
-  }
-}
-
-
-    
-    .portfolio-info {
-      flex-direction: column;
-    }
-
-    .button-container {
-      display: flex;
-      justify-content: center;
-    }
-
-    .center-button {
-      background-color: blue;
-      color: white; 
-      border: none; 
-      padding: 10px 20px; 
-      border-radius: 5px;
-      margin-top: 90px;
-
-    }
-    
-    .center-button::after {
-      content: ' →'; 
-      font-size: 12px; 
-      color: white;
-    }
-    
-    .center-button:hover {
-      background-color: darkblue; 
-    }
 
 
     .custom-container {
@@ -313,7 +229,7 @@
 
     /* Custom scrollbar styles */
     .text-bubble-container::-webkit-scrollbar {
-        width: 10px; /* Width of the scrollbar */
+        width: 5px; /* Width of the scrollbar */
     }
     
     .text-bubble-container::-webkit-scrollbar-track {
@@ -333,6 +249,7 @@
       background-color: rgb(38, 40, 40);
       color: white;
       border-radius: 15px;
+      font-size: 16px;
       padding: 10px;
       margin-bottom: 5px;
       display: inline-block;
@@ -392,6 +309,7 @@
       background-color: transparent; /* Transparent background */
       border: 3px solid rgb(30, 32, 32); /* White border */
       cursor: not-allowed; /* Change cursor to indicate it's disabled */
+      color: #555;
     }
     
     .custom-input:focus {
@@ -433,6 +351,139 @@
       display: none;
     }
 
+
+
+
+
+    @media (max-width: 1000px) {
+  /* Set the main class to flex and stack items in a column */
+  .main {
+    display: flex;
+    flex-direction: column; /* Stack all sections vertically */
+    padding: 0; /* Remove any extra padding */
+    margin: 0; /* Remove any margin */
+  }
+
+  /* Ensure individual sections take full width */
+  .main section {
+    width: 100%;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+
+  /* Hero Section - Set specific height for the video */
+  #hero {
+    height: auto; /* Allow the height to adjust */
+    padding: 0%; /* Adjust as needed */
+      padding-top: 50%;
+
+  }
+
+  .hero-video {
+    width: 100%;
+    height: auto; /* Adjust height dynamically */
+    object-fit: cover; /* Cover the entire area */
+    object-position: center; /* Center the video */
+  }
+
+  #contact {
+    width: 100%;
+    min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+    padding: 0%; /* Adjust as needed */
+      padding-top: 40%;
+      padding-left: 0%;
+
+  }
+
+  /* Adjust content layout */
+  #about, #projects, #resume {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0); /* Add a slight background color */
+  }
+
+  /* Remove any grid or row structure to make everything stack naturally */
+  .row, .gy-4, .container {
+    display: block; /* Ensure it's a block layout */
+    width: 100%; /* Take the full width */
+    margin: 0;
+  }
+
+  /* Optional: Style adjustments for text and buttons to fit mobile */
+  h2, h4, p, ul {
+    margin-bottom: 15px;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 100%; /* Full width buttons for better mobile interaction */
+    padding: 10px;
+  }
+
+
+
+
+  .text-bubble.left img {
+      width: 20px; /* Adjust size as needed */
+      height: 20px; /* Adjust size as needed */
+    }
+
+  .read-receipt {
+      font-size: 10px; /* Decrease font size */
+    }
+
+  .submit-button {
+      width: 24px; /* Adjust size to fit inside the input field */
+      height: 24px; /* Adjust size to fit inside the input field */
+    }
+
+  .submit-button i {
+      font-size: 20px; /* Adjust icon size to fit inside the button */
+    }
+
+
+    #small-screen-header {
+      display: flex; /* Use Flexbox */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      padding: 5%;
+    }
+
+
+
+}
+
+
+    
+    .portfolio-info {
+      flex-direction: column;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .center-button {
+      background-color: blue;
+      color: white; 
+      border: none; 
+      padding: 10px 20px; 
+      border-radius: 5px;
+      margin-top: 90px;
+
+    }
+    
+    .center-button::after {
+      content: ' →'; 
+      font-size: 12px; 
+      color: white;
+    }
+    
+    .center-button:hover {
+      background-color: darkblue; 
+    }
+
+
   </style>
 
 
@@ -451,7 +502,8 @@
 <body class="index-page">
 
   <header id="header">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <i class="header-toggle d-xl-none">
+    </i>
     <nav class="d-none d-xl-block">
     <div class="header-container">
       <div class="logo">
