@@ -181,6 +181,40 @@
     }
 
 
+    .social-buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      padding-bottom: 5%;
+        
+    }
+    
+    .github-btn, .linkedin-btn {
+      width: 50%;
+      text-align: center; /* Center the icons within the buttons */
+      font-size: 5rem; /* Adjust the font size as needed */
+      padding: 1rem; /* Add padding to increase the clickable area */
+    }
+    
+    .github-btn i, .linkedin-btn i {
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon-list {
+      list-style-type: none; /* Remove bullets */
+      padding: 0; /* Remove padding */
+      padding-top: 1%;
+      padding-bottom: 3%;
+      
+      display: flex; /* Display items inline */
+      flex-wrap: wrap; /* Wrap to the next line if needed */
+      gap: 10px; /* Add space between icons */
+    }
+
+    .icon-list li {
+      display: inline-block; /* Ensure each item is inline */
+    }
 
 
 
@@ -673,36 +707,76 @@
       <video src="assets/img/Initial Text.mov" autoplay loop muted data-aos="fade-in" class="hero-video"></video>
     </section><!-- /Hero Section -->
 
-    <!-- About Section -->
-    <section id="about" class="portfolio section light-background">
-        
-      <!-- Section Title -->
+    <section id="about" class="about section light-background">
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
+        <h2>About Me</h2>
         
         <!-- Background Section -->
-        <h5>BACKGROUND</h5>
-        <p>
-          My name is Omar Syed, and I am a junior studying Computer Science at the University of Central Florida. With a strong passion for full-stack development, I have worked extensively on mobile and web applications using a variety of technologies such as Flutter, Firebase, React, and TypeScript. Over the past year, I have successfully led the design and development of several cross-platform apps, focusing on delivering high-quality user experiences. I thrive in fast-paced, team-oriented environments, and I enjoy taking on challenges that push me to learn and grow as a developer. 
-        </p>
-        <p>
-          In my most recent role as a Full Stack Software Engineer, I worked with a small team to create a portfolio management app, where I led the UI/UX design and development using tools like Sketch, Figma, and Canva. I also implemented Firebase Cloud Functions to handle backend logic, ensuring the app’s scalability and real-time data processing. My work led to a 15% increase in new clients and a 95% retention rate for the company. Additionally, I have experience working in a legal consultancy role where I developed a Windows desktop app that streamlined the consultation process, significantly reducing call times and improving overall efficiency.
-        </p>
+        <div class="about-section">
+          <h3>Background</h3>
+          <p>
+            I am a passionate and creative Computer Science student at the University of Central Florida, driven by a love for full-stack development and innovative problem-solving. With hands-on experience in building web, desktop and mobile applications, managing front-end and back-end, I thrive on challenges and constantly seek opportunities to learn and grow as a developer. Check out my LinkedIn and GitHub profiles below to learn more about my work and projects!
+          </p>
+          <!-- Buttons for GitHub and LinkedIn -->
+          <div class="social-buttons">
+            <a href="https://github.com/omarsyed4" target="_blank" class="button github-btn">
+              <i class="bi bi-github"></i> 
+            </a>
+            <a href="https://www.linkedin.com/in/omarsyed4/" target="_blank" class="button linkedin-btn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+          </div>
+        </div>
+    
+        <!-- Languages Section -->
+        <div class="about-section">
+          <h3>Languages</h3>
+          <ul class="icon-list">
+            <li><img src="assets/icons/c.svg" alt="C Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/c-sharp.svg" alt="C# Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/java.svg" alt="Java Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/python.svg" alt="Python Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/typescript.svg" alt="TypeScript Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/javascript.svg" alt="JavaScript Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/dart.svg" alt="Dart Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/swift.svg" alt="Swift Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/kotlin.svg" alt="Kotlin Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/html.svg" alt="HTML Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/css.svg" alt="CSS Icon" width="50" height="50"></li>
+          </ul>
+        </div>
+        
+        <!-- Frameworks Section -->
+        <div class="about-section">
+          <h3>Frameworks</h3>
+          <ul class="icon-list">
+            <li><img src="assets/icons/react.svg" alt="React Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/flutter.svg" alt="Flutter Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/nodejs.svg" alt="Node.js Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/wpf.svg" alt="WPF Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/dot-net.svg" alt=".NET Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/bootstrap.svg" alt="Bootstrap Icon" width="50" height="50"></li>
+          </ul>
+        </div>
+        
+        <!-- Tools Section -->
+        <div class="about-section">
+          <h3>Tools</h3>
+          <ul class="icon-list">
+            <li><img src="assets/icons/git.svg" alt="Git Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/github.svg" alt="GitHub Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/android-studio.svg" alt="Android Studio Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/xcode.svg" alt="XCode Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/firebase.svg" alt="Firebase Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/vscode.svg" alt="VSCode Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/visual-studio.svg" alt="Visual Studio Icon" width="50" height="50"></li>
+            <li><img src="assets/icons/figma.svg" alt="Figma Icon" width="50" height="50"></li>
+          </ul>
+        </div>
 
-        <!-- Skills Section -->
-        <h5>SKILLS</h5>
-        <ul>
-          <li><strong>Languages:</strong> C, C#, Java, Python, TypeScript, JavaScript, Dart, Swift</li>
-          <li><strong>Frameworks:</strong> React, Flutter, Node.js, WPF, .NET, Bootstrap</li>
-          <li><strong>Tools:</strong> Git, GitHub, Android Studio, XCode, Firebase, VScode, Visual Studio, Figma, Sketch</li>
-          <li><strong>Strengths:</strong> Full-stack development, UI/UX design, cross-platform mobile app development, backend integration, project management, and teamwork.</li>
-        </ul>
-      </div><!-- End Section Title -->
-
-
-    </div>
-
-    </section><!-- /About Section -->
+    
+      </div>
+    </section>
 
 
     <!-- Projects Section -->
