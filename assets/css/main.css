@@ -712,6 +712,13 @@ input:disabled {
 
 
 @media (max-width: 1000px) {
+  .content-wrapper {
+    position: relative;
+    top: -120px; /* Adjust this value as needed to move the section higher */
+    z-index: 10;
+  }
+
+
   /* Set the main class to flex and stack items in a column */
   .main {
     display: flex;
@@ -729,15 +736,16 @@ input:disabled {
 
   /* Hero Section - Set specific height for the video */
   #hero {
-    height: auto; /* Allow the height to adjust */
+    height: 50vw; /* Allow the height to adjust */
     padding: 0%; /* Adjust as needed */
-      padding-top: 50%;
+      padding-top: 0%;
+      bottom: -50px;
 
   }
 
   .hero-video {
     width: 100%;
-    height: auto; /* Adjust height dynamically */
+    height: 50vw; /* Adjust height dynamically */
     object-fit: cover; /* Cover the entire area */
     object-position: center; /* Center the video */
   }
