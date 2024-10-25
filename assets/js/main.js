@@ -69,7 +69,7 @@
   
   function toggleSmallScreenHeader() {
     if (smallScreenHeader) {
-      window.scrollY > 200 ? smallScreenHeader.classList.add('active') : smallScreenHeader.classList.remove('active');
+      window.scrollY > 300 ? smallScreenHeader.classList.add('active') : smallScreenHeader.classList.remove('active');
     }
   }
   

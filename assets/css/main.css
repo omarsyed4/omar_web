@@ -160,14 +160,15 @@ section,
   backdrop-filter: blur(5px); /* Apply blur effect */
   display: none; /* Initially hide the small screen header */
   display: flex; /* Use Flexbox */
-  visibility: hidden;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+  opacity: 0; /* Start with opacity 0 */
+  transition: opacity 0.5s ease-in-out; /* Add transition for opacity */
 }
 
 #small-screen-header.active {
-  display: flex; /* Show the header when active */
-  visibility: visible;
+  display: flex; /* Ensure the header is displayed */
+  opacity: 1; /* Fade in by setting opacity to 1 */
 }
 
 
