@@ -109,14 +109,57 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
       <video 
+        id="video1" 
         src="assets/img/Initial Text.mp4" 
-        autoplay loop muted 
-        data-aos="fade-in" 
-        class="hero-video"
-        playsinline
-        webkit-playsinline      
+        autoplay 
+        loop 
+        muted 
+        preload="auto"
+        class="hero-video active" 
+        playsinline 
+        webkit-playsinline
       ></video>
-    </section><!-- /Hero Section -->
+      
+      <video 
+        id="video2" 
+        src="assets/img/Jus sent the text, waiting for a response.mp4" 
+        autoplay 
+        loop 
+        muted 
+        preload="auto"
+        class="hero-video" 
+        playsinline 
+        webkit-playsinline
+      ></video>
+      
+      <video 
+        id="video3" 
+        src="assets/img/Looped Waiting.mp4" 
+        autoplay 
+        loop 
+        muted 
+        preload="auto"
+        class="hero-video" 
+        playsinline 
+        webkit-playsinline
+      ></video>
+      
+      <video 
+        id="video4" 
+        src="assets/img/Reading Message, Replying Back.mp4" 
+        autoplay 
+        loop 
+        muted 
+        preload="auto"
+        data-aos="fade-in" 
+        class="hero-video" 
+        playsinline 
+        webkit-playsinline
+      ></video>
+    </section>
+    <!-- /Hero Section -->
+
+
 
     <section id="about" class="about section light-background">
       <div class="container section-title" data-aos="fade-up">
@@ -497,6 +540,8 @@
     async function addTextBubble() {
       console.log("addTextBubble called");
 
+      changeHeroVideo("video4")
+
       const inputField = document.getElementById('name-field');
       console.log("inputField:", inputField);
 
@@ -579,9 +624,6 @@
         textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
         console.log("Scrolled to the bottom of textBubbleContainer");
 
-        // Change the hero video to "Reading Message, Replying Back"
-        changeHeroVideo('assets/img/Reading Message, Replying Back.mp4');
-
 
         // Send the message to OpenAI
         updateConversation('user', text);
@@ -603,6 +645,8 @@
             img.src = 'assets/img/my-profile-img.jpg';
             img.alt = 'Sender';
             receivedBubble.appendChild(img);
+
+            changeHeroVideo("video2")
         
             const textNode = document.createTextNode(response); // AI response here
             receivedBubble.appendChild(textNode);
@@ -613,18 +657,16 @@
             // Scroll to the bottom of the container
             textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
             console.log("Scrolled to the bottom of textBubbleContainer");
-        
-            changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mp4');
-            
+                    
             // Change the video after 2 seconds
             setTimeout(() => {
+              changeHeroVideo('video3')
               enableChatInput(); // Re-enable chat input
               console.log("Re-enabled chat input");
             }, 3500); 
             
             // Change the hero video after an additional delay
             setTimeout(() => {
-              changeHeroVideo('assets/img/Looped Waiting.mp4');
               console.log("Changed hero video to 'Looped Waiting.mp4'");
             }, 3000); // 3000 milliseconds = 3 seconds
 
@@ -686,11 +728,23 @@
       }
     }
 
-    function changeHeroVideo(src) {
-      const heroVideo = document.querySelector('.hero-video');
-      if (heroVideo) {
-        heroVideo.src = src;
-        heroVideo.play();
+    function changeHeroVideo(videoId) {
+      console.log("changeHeroVideo called with videoId:", videoId);
+      const videos = document.querySelectorAll('.hero-video');
+      console.log("Found videos:", videos);
+      videos.forEach(video => {
+        video.classList.remove('active');
+        console.log("Removed 'active' class from video:", video);
+      });
+      const newVideo = document.getElementById(videoId);
+      console.log("Found newVideo:", newVideo);
+      if (newVideo) {
+        newVideo.classList.add('active');
+        console.log("Added 'active' class to newVideo:", newVideo);
+        newVideo.currentTime = 0; // Reset the video to the beginning
+        newVideo.play().catch(error => {
+          console.error('Error playing video:', error);
+        });
       }
     }
 
@@ -703,45 +757,46 @@
     window.addEventListener('DOMContentLoaded', () => {
       disableChatInput(); // Disable chat input on page load
 
+      
       setTimeout(() => {
         const textBubbleContainer = document.getElementById('text-bubble-container');
-
+        
         // Simulate receiving an initial message when the page loads
         const receivedBubble = document.createElement('div');
         receivedBubble.className = 'text-bubble left';
-
+        
         const img = document.createElement('img');
         img.src = 'assets/img/my-profile-img.jpg';
         img.alt = 'Sender';
-
+        
         receivedBubble.appendChild(img);
-
+        
         const initialMessage = document.createTextNode("Welcome to my website! I'm the AI version of Omar, created by Omar (myself). Feel free to ask me anything about my skills, projects, or anything you'd like to know!");
         receivedBubble.appendChild(initialMessage);
-
+        
         textBubbleContainer.appendChild(receivedBubble);
         console.log("Appended initial receivedBubble to textBubbleContainer on page load");
-
+        
         // Scroll to the bottom of the container
         textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
         console.log("Scrolled to the bottom of textBubbleContainer after initial message");
-
+        
         // Change the hero video
-        changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mp4');
-
-        // Wait 2 seconds and then change the video to "Looped Waiting.mp4"
-        setTimeout(() => {
-          console.log("Changing hero video to 'Looped Waiting.mp4' after 2 seconds");
-          changeHeroVideo('assets/img/Looped Waiting.mp4', true); // Enable looping for the "Looped Waiting.mp4" video
-        }, 4000); // 2000 milliseconds = 2 seconds
-      }, 2000); // 5000 milliseconds = 5 seconds
-
-      // Enable chat input 3 seconds after the website has loaded
+        changeHeroVideo('video2');
+        console.log("Changing hero video to 'video2'");
+      }, 2000); // 2000 milliseconds = 2 seconds
+      
       setTimeout(() => {
-        console.log("Enabling chat input 3 seconds after the website has loaded");
+        // Change the video to "Looped Waiting.mp4"
+        changeHeroVideo('video3');
+        console.log("Changing hero video to 'Looped Waiting.mp4'");
+      
+        // Enable chat input
+        console.log("Enabling chat input");
         enableChatInput();
-      }, 5000); // 3000 milliseconds = 3 seconds
+      }, 4500); // 4500 milliseconds = 4.5 seconds (2 seconds + 2.5 seconds)
     });
+
 
     document.addEventListener('DOMContentLoaded', () => {
       const projectItems = document.querySelectorAll('.projects-item');
