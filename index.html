@@ -751,8 +751,24 @@
           const projectInfo = item.querySelector('.projects-info');
           projectInfo.classList.toggle('visible');
         });
+    
+        // Prevent click events on .projects-info and its children from propagating to .projects-item
+        const projectInfo = item.querySelector('.projects-info');
+        if (projectInfo) {
+          projectInfo.addEventListener('click', (event) => {
+            event.stopPropagation();
+          });
+    
+          const projectInfoChildren = projectInfo.querySelectorAll('*');
+          projectInfoChildren.forEach(child => {
+            child.addEventListener('click', (event) => {
+              event.stopPropagation();
+            });
+          });
+        }
       });
     });
+
 
   </script>
 
