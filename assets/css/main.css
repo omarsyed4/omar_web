@@ -722,9 +722,13 @@ input:disabled {
     width: 100%;
     min-width: 100vw; /* Ensure it does not shrink below the screen's width */
     padding: 0%; /* Adjust as needed */
-      padding-top: 30%;
+      padding-top: 20%;
       padding-left: 0%;
 
+  }
+
+  .text-bubble-container {
+    max-height: 160px;
   }
 
   /* Adjust content layout */
