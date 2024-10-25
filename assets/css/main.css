@@ -679,3 +679,115 @@ input:disabled {
   opacity: 1;
 }
 
+
+
+@media (max-width: 1000px) {
+  /* Set the main class to flex and stack items in a column */
+  .main {
+    display: flex;
+    flex-direction: column; /* Stack all sections vertically */
+    padding: 0; /* Remove any extra padding */
+    margin: 0; /* Remove any margin */
+  }
+
+  /* Ensure individual sections take full width */
+  .main section {
+    width: 100%;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+
+  /* Hero Section - Set specific height for the video */
+  #hero {
+    height: auto; /* Allow the height to adjust */
+    padding: 0%; /* Adjust as needed */
+      padding-top: 50%;
+
+  }
+
+  .hero-video {
+    width: 100%;
+    height: auto; /* Adjust height dynamically */
+    object-fit: cover; /* Cover the entire area */
+    object-position: center; /* Center the video */
+  }
+
+  #chatbot {
+    width: 100%;
+    min-width: 100vw; /* Ensure it does not shrink below the screen's width */
+    padding: 0%; /* Adjust as needed */
+      padding-top: 30%;
+      padding-left: 0%;
+
+  }
+
+  /* Adjust content layout */
+  #about, #projects, #resume {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0); /* Add a slight background color */
+  }
+
+  /* Remove any grid or row structure to make everything stack naturally */
+  .row, .gy-4, .container {
+    display: block; /* Ensure it's a block layout */
+    width: 100%; /* Take the full width */
+    margin: 0;
+  }
+
+  /* Optional: Style adjustments for text and buttons to fit mobile */
+  h2, h4, p, ul {
+    margin-bottom: 15px;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 100%; /* Full width buttons for better mobile interaction */
+    padding: 10px;
+  }
+
+  .text-bubble {
+    font-size: 13px;
+    padding: 5px;
+  }
+
+
+
+  .text-bubble.left img {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+    padding: 0px;
+  }
+
+
+
+
+  .read-receipt {
+    font-size: 10px; /* Decrease font size */
+  }
+
+  .submit-button {
+    width: 24px; /* Adjust size to fit inside the input field */
+    height: 24px; /* Adjust size to fit inside the input field */
+    right: 16px; /* Adjust position to fit inside the input field */
+    bottom: 6px; /* Adjust position to fit inside the input field */
+  }
+
+  .submit-button i {
+    font-size: 20px; /* Adjust icon size to fit inside the button */
+  }
+
+
+  #small-screen-header {
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 5%;
+  }
+
+
+
+}
