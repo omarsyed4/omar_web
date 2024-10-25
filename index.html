@@ -108,7 +108,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-      <video src="assets/img/Initial Text.mov" autoplay loop muted data-aos="fade-in" class="hero-video"></video>
+      <video src="assets/img/Initial Text.mp4" autoplay loop muted data-aos="fade-in" class="hero-video"></video>
     </section><!-- /Hero Section -->
 
     <section id="about" class="about section light-background">
@@ -545,7 +545,7 @@
         console.log("Scrolled to the bottom of textBubbleContainer");
 
         // Change the hero video to "Reading Message, Replying Back"
-        changeHeroVideo('assets/img/Reading Message, Replying Back.mov');
+        changeHeroVideo('assets/img/Reading Message, Replying Back.mp4');
 
 
         // Send the message to OpenAI
@@ -579,7 +579,7 @@
             textBubbleContainer.scrollTop = textBubbleContainer.scrollHeight;
             console.log("Scrolled to the bottom of textBubbleContainer");
         
-            changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
+            changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mp4');
             
             // Change the video after 2 seconds
             setTimeout(() => {
@@ -589,8 +589,8 @@
             
             // Change the hero video after an additional delay
             setTimeout(() => {
-              changeHeroVideo('assets/img/Looped Waiting.mov');
-              console.log("Changed hero video to 'Looped Waiting.mov'");
+              changeHeroVideo('assets/img/Looped Waiting.mp4');
+              console.log("Changed hero video to 'Looped Waiting.mp4'");
             }, 3000); // 3000 milliseconds = 3 seconds
 
         
@@ -692,12 +692,12 @@
         console.log("Scrolled to the bottom of textBubbleContainer after initial message");
 
         // Change the hero video
-        changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mov');
+        changeHeroVideo('assets/img/Jus sent the text, waiting for a response.mp4');
 
-        // Wait 2 seconds and then change the video to "Looped Waiting.mov"
+        // Wait 2 seconds and then change the video to "Looped Waiting.mp4"
         setTimeout(() => {
-          console.log("Changing hero video to 'Looped Waiting.mov' after 2 seconds");
-          changeHeroVideo('assets/img/Looped Waiting.mov', true); // Enable looping for the "Looped Waiting.mov" video
+          console.log("Changing hero video to 'Looped Waiting.mp4' after 2 seconds");
+          changeHeroVideo('assets/img/Looped Waiting.mp4', true); // Enable looping for the "Looped Waiting.mp4" video
         }, 4000); // 2000 milliseconds = 2 seconds
       }, 2000); // 5000 milliseconds = 5 seconds
 
