@@ -454,9 +454,21 @@ section,
   margin-right: 5px; 
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .text-bubble.left {
   align-self: flex-start; /* Align the bubble to the left */
   background-color: rgb(38, 40, 40); /* Same as the base color */
+  animation: fadeIn 0.5s ease-in-out;
   padding-left: 50px; /* Add padding to make space for the image */
 }
 
