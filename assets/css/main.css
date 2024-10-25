@@ -739,7 +739,7 @@ input:disabled {
     height: 50vw; /* Allow the height to adjust */
     padding: 0%; /* Adjust as needed */
     padding-top: 0%;
-    bottom: -100px; /* Adjust this value to move the section lower */
+    bottom: -120px; /* Adjust this value to move the section lower */
   }
   
   .hero-video {
