@@ -207,7 +207,7 @@
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             
             <!-- Project 1: Personal Website -->
-            <div class="col-lg-4 col-md-6 projects-item isotope-item filter-app">
+            <div id="project1" class="col-lg-4 col-md-6 projects-item isotope-item filter-app">
               <div class="projects-content h-100">
                 <video 
                   src="assets/img/Website.mov" 
@@ -230,7 +230,7 @@
             </div><!-- End Project 1 -->
             
             <!-- Project 2: Investment Management Mobile App -->
-            <div class="col-lg-4 col-md-6 projects-item isotope-item filter-app">
+            <div id="project2" class="col-lg-4 col-md-6 projects-item isotope-item filter-app">
               <div class="projects-content h-100">
                 <video 
                   src="assets/img/TSapp.mov" 
@@ -253,7 +253,7 @@
             </div><!-- End Project 2 -->
             
             <!-- Project 3: Description of Incident Maker (Law Firm) -->
-            <div class="col-lg-4 col-md-6 projects-item isotope-item filter-app">
+            <div id="project3" class="col-lg-4 col-md-6 projects-item isotope-item filter-app">
               <div class="projects-content h-100">
                 <video 
                   src="assets/img/doi.mp4" 
@@ -273,8 +273,9 @@
                 </div>
               </div>
               <h4 class="text-center mt-2">Description of Incident Maker</h4>
-            </div><!-- End Project 3 -->
-    
+            </div><!-- End Project 3 -->    
+
+            
           </div><!-- End Projects Container -->
 
         </div>
@@ -740,6 +741,17 @@
         console.log("Enabling chat input 3 seconds after the website has loaded");
         enableChatInput();
       }, 5000); // 3000 milliseconds = 3 seconds
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const projectItems = document.querySelectorAll('.projects-item');
+    
+      projectItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const projectInfo = item.querySelector('.projects-info');
+          projectInfo.classList.toggle('visible');
+        });
+      });
     });
 
   </script>
