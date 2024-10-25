@@ -160,8 +160,14 @@ section,
   backdrop-filter: blur(5px); /* Apply blur effect */
   display: none; /* Initially hide the small screen header */
   display: flex; /* Use Flexbox */
+  visibility: hidden;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+}
+
+#small-screen-header.active {
+  display: flex; /* Show the header when active */
+  visibility: visible;
 }
 
 
@@ -401,7 +407,7 @@ section,
 }
 
 .text-bubble-container {
-  max-height: 180px; /* Adjust as needed */
+  max-height: 200px; /* Adjust as needed */
   overflow-y: auto; /* Scroll if content overflows */
   margin-bottom: 10px; /* Space between bubbles and input */
   border-radius: 30px 30px 10px 10px;
@@ -727,13 +733,13 @@ input:disabled {
     width: 100%;
     min-width: 100vw; /* Ensure it does not shrink below the screen's width */
     padding: 0%; /* Adjust as needed */
-      padding-top: 20%;
+      padding-top: 0%;
       padding-left: 0%;
 
   }
 
   .text-bubble-container {
-    max-height: 160px;
+    max-height: 200px;
   }
 
   /* Adjust content layout */

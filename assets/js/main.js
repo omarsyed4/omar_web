@@ -59,12 +59,20 @@
    * Scroll top button
    */
   let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
+  let smallScreenHeader = document.querySelector('#small-screen-header');
+  
+  function toggleScrollTopButton() {
     if (scrollTop) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
+  
+  function toggleSmallScreenHeader() {
+    if (smallScreenHeader) {
+      window.scrollY > 200 ? smallScreenHeader.classList.add('active') : smallScreenHeader.classList.remove('active');
+    }
+  }
+  
   scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({
@@ -72,9 +80,16 @@
       behavior: 'smooth'
     });
   });
-
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  
+  window.addEventListener('load', () => {
+    toggleScrollTopButton();
+    toggleSmallScreenHeader();
+  });
+  
+  document.addEventListener('scroll', () => {
+    toggleScrollTopButton();
+    toggleSmallScreenHeader();
+  });
 
   /**
    * Animation on scroll function and init
