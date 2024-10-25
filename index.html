@@ -79,9 +79,9 @@
   <main class="main">
 
     <section id="chatbot" class="chatbot section">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
         <div class="row gy-4">
-          <div class="custom-container" data-aos="fade-up">
+          <div class="custom-container">
             <div id="text-bubble-container" class="text-bubble-container"></div>
             <input type="text" name="name" id="name-field" class="form-control custom-input" placeholder="Message" required="" oninput="toggleButtonVisibility()" onkeydown="handleEnterKey(event)">
             <button type="button" class="submit-button hidden" onclick="addTextBubble('sent')">
@@ -89,7 +89,7 @@
             </button>
           </div>
         </div>
-        <div class="question-buttons" data-aos="fade-up">
+        <div class="question-buttons">
           <button type="button" onclick="pasteQuestion('What skills are you proficient in?')">
             <i class="bi bi-magic"></i> What skills are you proficient in?
           </button>
@@ -99,7 +99,6 @@
         </div>
       </div>
     </section><!-- /chatbot Section -->
-
 
 
 
@@ -437,6 +436,12 @@
   <script src="assets/vendor/aos/aos.js"></script>
   
   <script>
+
+    AOS.init({
+      delay: 0, // global delay for all animations
+      duration: 800, // values from 0 to 3000, with step 50ms
+      once: true, // whether animation should happen only once - while scrolling down
+    });
 
     // Initial conversation setup
     let conversation = JSON.parse(localStorage.getItem('conversation')) || [
