@@ -9,24 +9,6 @@ const API_KEY = process.env.API_KEY;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Redirect to custom domain if accessed via Heroku URL
-app.get("*", (req, res, next) => {
-  if (req.headers.host !== "www.omar-syed.com") {
-    res.redirect(301, "https://www.omar-syed.com" + req.originalUrl);
-  } else {
-    next();
-  }
-});
-
-// Route handlers (e.g., home page, other routes)
-app.get("/", (req, res) => {
-  res.send("Welcome to my personal website!");
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 
 // Serve static files from the 'assets' directory
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
