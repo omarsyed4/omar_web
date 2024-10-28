@@ -1,6 +1,6 @@
-Thanks for downloading this template!
+Thank you for visiting my repository!
 
-Template Name: iPortfolio
-Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+This is the code for my personal website, where I highlight my skills, experience, and projects. The site includes an interactive chatbot feature, an overview of my background, my resume, a portfolio showcasing my work, and links to my social media profiles.
+
+If you have any feedback, constructive suggestions, or just get in touch with me, feel free to reach out on LinkedIn - https://www.linkedin.com/in/omarsyed4/ 
+or via email at omarsyed0504@gmail.com
