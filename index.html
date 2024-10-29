@@ -741,32 +741,18 @@
       console.log("changeHeroVideo called with videoId:", videoId);
       const videos = document.querySelectorAll('.hero-video');
       console.log("Found videos:", videos);
-      
-      // Pause and hide all videos
       videos.forEach(video => {
-        video.pause();
         video.classList.remove('active');
-        console.log("Paused and removed 'active' class from video:", video);
+        console.log("Removed 'active' class from video:", video);
       });
-      
       const newVideo = document.getElementById(videoId);
       console.log("Found newVideo:", newVideo);
       if (newVideo) {
-        // Reset the video to the beginning
-        newVideo.currentTime = 0;
-        
-        // Listen for the 'playing' event
-        const onPlaying = () => {
-          newVideo.classList.add('active');
-          console.log("Added 'active' class to newVideo:", newVideo);
-          newVideo.removeEventListener('playing', onPlaying);
-        };
-        newVideo.addEventListener('playing', onPlaying);
-        
-        // Try to play the video
+        newVideo.classList.add('active');
+        console.log("Added 'active' class to newVideo:", newVideo);
+        newVideo.currentTime = 0; // Reset the video to the beginning
         newVideo.play().catch(error => {
           console.error('Error playing video:', error);
-          // Handle autoplay restrictions if necessary
         });
       }
     }
