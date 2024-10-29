@@ -753,11 +753,15 @@
         newVideo.classList.add('active');
         console.log("Added 'active' class to newVideo:", newVideo);
         newVideo.currentTime = 0; // Reset the video to the beginning
+        newVideo.pause(); // Ensure the video is paused initially
+        newVideo.load(); // Load the video to display the poster
         newVideo.play().catch(error => {
           console.error('Error playing video:', error);
         });
       }
     }
+
+
 
     
     function pasteQuestion(question) {
